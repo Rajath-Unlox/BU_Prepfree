@@ -231,13 +231,13 @@ const Page = () => {
       {popupOpen && (
         <div className="w-screen h-screen fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 flex flex-col items-center justify-center w-auto h-1/2">
-            <div className="w-12 h-12 rounded-full bg-[#1B8D7A] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[#314370] flex items-center justify-center">
               <Check size={24} className="text-white" />
             </div>
             <h1 className="font-medium mt-2">Applying Template...</h1>
-            <div className="h-2 w-[300px] bg-[#C9EBE6] rounded-full mt-2 overflow-hidden">
+            <div className="h-2 w-[300px] bg-[#EBF0F8] rounded-full mt-2 overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-[#1B8D7A] to-[#072722] transition-all duration-100"
+                className="h-full bg-gradient-to-r from-[#314370] to-[#9E2339] transition-all duration-100"
                 style={{ width: `${progress}%` }}
               ></div>
             </div>
@@ -274,7 +274,7 @@ const Page = () => {
                     `/dashboard/ai-resume-builder/template-selector/${tmpl.templateId}`
                   )
                 }
-                className="w-fit text-white flex items-center px-4 py-2 bg-[#0B5B4D] rounded-md gap-1 cursor-pointer absolute bottom-8 left-1/2 -translate-x-1/2 group-hover:block z-30 hidden shadow-xl"
+                className="w-fit text-white flex items-center px-4 py-2 bg-[#9E2339] rounded-md gap-1 cursor-pointer absolute bottom-8 left-1/2 -translate-x-1/2 group-hover:block z-30 hidden shadow-xl"
               >
                 <h1 className="text-sm font-medium">Use this Template</h1>
               </button>

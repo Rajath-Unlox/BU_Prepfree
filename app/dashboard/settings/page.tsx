@@ -119,8 +119,8 @@ const SettingsPage = () => {
             {/* Change Password Section */}
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 bg-[#E7FEEE] rounded-lg">
-                        <Lock className="w-5 h-5 text-[#0B5B4D]" />
+                    <div className="p-2 bg-[#EBF0F8] rounded-lg">
+                        <Lock className="w-5 h-5 text-[#314370]" />
                     </div>
                     <div>
                         <h2 className="text-lg font-bold text-[#1E1E1E]">Change Password</h2>
@@ -141,7 +141,7 @@ const SettingsPage = () => {
                                 value={formData.currentPassword}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#0B5B4D]/20 focus:border-[#0B5B4D] outline-none transition-all text-sm"
+                                className="w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#314370]/20 focus:border-[#314370] outline-none transition-all text-sm"
                                 placeholder="Enter current password"
                             />
                             <button
@@ -165,7 +165,7 @@ const SettingsPage = () => {
                                 onChange={handleChange}
                                 required
                                 minLength={8}
-                                className="w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#0B5B4D]/20 focus:border-[#0B5B4D] outline-none transition-all text-sm"
+                                className="w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#314370]/20 focus:border-[#314370] outline-none transition-all text-sm"
                                 placeholder="Enter new password"
                             />
                             <button
@@ -188,7 +188,7 @@ const SettingsPage = () => {
                                 value={formData.confirmPassword}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#0B5B4D]/20 focus:border-[#0B5B4D] outline-none transition-all text-sm"
+                                className="w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-[#314370]/20 focus:border-[#314370] outline-none transition-all text-sm"
                                 placeholder="Confirm new password"
                             />
                             <button
@@ -205,7 +205,7 @@ const SettingsPage = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="bg-[#0B5B4D] text-white px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-[#094d41] transition-colors flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="bg-[#314370] text-white px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-[#314370]/85 transition-colors flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                         >
                             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
                             Update Password

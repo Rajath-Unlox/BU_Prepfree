@@ -193,7 +193,7 @@ const ExperienceSection = ({
               resetForm();
               setEditIndex(-1);
             }}
-            className="flex items-center gap-1 text-black cursor-pointer hover:text-[#0B5B4D] font-medium"
+            className="flex items-center gap-1 text-black cursor-pointer hover:text-[#314370] font-medium"
           >
             <Plus size={16} /> Add
           </button>
@@ -318,7 +318,7 @@ const ExperienceSection = ({
 
               <button
                 onClick={handleSave}
-                className="px-8 py-2 rounded-md cursor-pointer flex gap-2 items-center bg-[#0B5B4D] border-[#0B5B4D] text-white"
+                className="px-8 py-2 rounded-md cursor-pointer flex gap-2 items-center bg-[#9E2339] border-[#9E2339] text-white"
               >
                 Save
               </button>
@@ -349,7 +349,7 @@ const ExperienceSection = ({
                     {exp.title}
                   </h2>
 
-                  <p className="text-sm text-[#0B5B4D] font-semibold">
+                  <p className="text-sm text-[#314370] font-semibold">
                     {exp.company}
                     <span className="text-xs text-[#616161] ml-2">
                       {exp.jobType}
@@ -376,7 +376,7 @@ const ExperienceSection = ({
               <button onClick={() => handleEdit(idx)}>
                 <Pen
                   size={18}
-                  className="text-black cursor-pointer hover:text-[#0B5B4D]"
+                  className="text-black cursor-pointer hover:text-[#314370]"
                 />
               </button>
             </div>
@@ -394,7 +394,7 @@ const ExperienceSection = ({
 
             <button
               onClick={() => setEditIndex(-1)}
-              className="text-[#0B5B4D] font-medium cursor-pointer"
+              className="text-[#314370] font-medium cursor-pointer"
             >
               + Add Experience
             </button>

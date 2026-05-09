@@ -113,7 +113,7 @@ export function DataTable() {
           href={`/dashboard/my-performance/result-&-analysis?id=${
             tableData[row.index]._id
           }`}
-          className="text-[#005B4F] font-medium underline underline-offset-2"
+          className="text-[#314370] font-medium underline underline-offset-2"
         >
           {row.getValue("action")}
         </Link>
@@ -134,7 +134,7 @@ export function DataTable() {
     <>
       <div className="w-full rounded-md border border-gray-200 overflow-hidden">
         <Table>
-          <TableHeader className="bg-gray-50">
+          <TableHeader className="bg-[#F2F2F2]">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
@@ -181,7 +181,7 @@ export function DataTable() {
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  className="bg-[#EAF6EE] border-b border-black/10 hover:bg-[#EAF6EE]"
+                  className="bg-[#EBF0F8] border-b border-black/10 hover:bg-[#EBF0F8]"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id} className="text-[#1E1E1E] text-sm">
@@ -210,7 +210,7 @@ export function DataTable() {
           <button
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className="border-2 border-[#0B5B4D] text-[#0B5B4D] px-6 py-1 rounded-md"
+            className="border-2 border-[#314370] text-[#314370] px-6 py-1 rounded-md"
           >
             Prev
           </button>
@@ -218,7 +218,7 @@ export function DataTable() {
           <button
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className="bg-[#0B5B4D] border-2 border-[#0B5B4D] text-white px-6 py-1 ml-2 rounded-md"
+            className="bg-[#314370] border-2 border-[#314370] text-white px-6 py-1 ml-2 rounded-md"
           >
             Next
           </button>

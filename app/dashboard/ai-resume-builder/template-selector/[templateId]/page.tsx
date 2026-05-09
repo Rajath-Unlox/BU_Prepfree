@@ -953,7 +953,7 @@ const Page = () => {
                 </div>
 
                 {/* Camera Badge */}
-                <div className="absolute bottom-0 right-0 w-7 h-7 p-1 bg-white text-[#0B5B4D] rounded-full flex items-center justify-center border border-gray-200">
+                <div className="absolute bottom-0 right-0 w-7 h-7 p-1 bg-white text-[#314370] rounded-full flex items-center justify-center border border-gray-200">
                   <Camera className="w-4 h-4" />
                 </div>
 
@@ -966,7 +966,7 @@ const Page = () => {
                   onChange={handleImageUpload}
                 />
               </label>
-              <h1 className="text-[#0B5B4D] font-medium text-sm">
+              <h1 className="text-[#314370] font-medium text-sm">
                 Upload Profile Photo
               </h1>
             </div>
@@ -1257,7 +1257,7 @@ const Page = () => {
                         description: "",
                       })
                     }
-                    className="text-[#006666] font-medium text-sm text-left"
+                    className="text-[#314370] font-medium text-sm text-left"
                   >
                     + Add Secondary (X)
                   </button>
@@ -1278,7 +1278,7 @@ const Page = () => {
                         description: "",
                       })
                     }
-                    className="text-[#006666] font-medium text-sm text-left"
+                    className="text-[#314370] font-medium text-sm text-left"
                   >
                     + Add Senior Secondary (XII)
                   </button>
@@ -1329,7 +1329,7 @@ const Page = () => {
                 <button
                   type="button"
                   onClick={() => addSkill("technical")}
-                  className="w-fit rounded-md py-2 px-10 text-white bg-[#0B5B4D]"
+                  className="w-fit rounded-md py-2 px-10 text-white bg-[#314370]"
                 >
                   Add
                 </button>
@@ -1341,7 +1341,7 @@ const Page = () => {
                   .map((skill, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center gap-2 px-4 py-2 bg-[#EAFCF1] rounded-full text-black/80"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#EBF0F8] rounded-full text-black/80"
                     >
                       {skill.name}
                       <button
@@ -1361,7 +1361,7 @@ const Page = () => {
                     <div
                       key={skill}
                       onClick={() => addSkill("technical", skill)}
-                      className="px-4 py-2 bg-[#EAFCF1] rounded-full text-black/71 cursor-pointer hover:bg-[#c8f5dd]"
+                      className="px-4 py-2 bg-[#EBF0F8] rounded-full text-black/71 cursor-pointer hover:bg-[#EBF0F8]/80"
                     >
                       {skill}
                     </div>
@@ -1384,7 +1384,7 @@ const Page = () => {
                 <button
                   type="button"
                   onClick={() => addSkill("soft")}
-                  className="w-fit rounded-md py-2 px-10 text-white bg-[#0B5B4D]"
+                  className="w-fit rounded-md py-2 px-10 text-white bg-[#314370]"
                 >
                   Add
                 </button>
@@ -1396,7 +1396,7 @@ const Page = () => {
                   .map((skill, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center gap-2 px-4 py-2 bg-[#EAFCF1] rounded-full text-black/80"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#EBF0F8] rounded-full text-black/80"
                     >
                       {skill.name}
                       <button
@@ -1438,7 +1438,7 @@ const Page = () => {
                 <button
                   type="button"
                   onClick={() => addSkill("language")}
-                  className="w-fit rounded-md py-2 px-10 text-white bg-[#0B5B4D]"
+                  className="w-fit rounded-md py-2 px-10 text-white bg-[#314370]"
                 >
                   Add
                 </button>
@@ -1450,7 +1450,7 @@ const Page = () => {
                   .map((lang, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center gap-2 px-4 py-2 bg-[#EAFCF1] rounded-full text-black/80"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#EBF0F8] rounded-full text-black/80"
                     >
                       {lang.name}
                       <button
@@ -1472,7 +1472,7 @@ const Page = () => {
                     <div
                       key={lang}
                       onClick={() => addSkill("language", lang)}
-                      className="px-4 py-2 bg-[#EAFCF1] rounded-full text-black/71 cursor-pointer hover:bg-[#c8f5dd]"
+                      className="px-4 py-2 bg-[#EBF0F8] rounded-full text-black/71 cursor-pointer hover:bg-[#EBF0F8]/80"
                     >
                       {lang}
                     </div>
@@ -1621,7 +1621,7 @@ const Page = () => {
             <button
               type="button"
               onClick={addExperience}
-              className="text-[#0B5B4D] hover:underline cursor-pointer"
+              className="text-[#314370] hover:underline cursor-pointer"
             >
               + Add Additional Experience
             </button>
@@ -1761,7 +1761,7 @@ const Page = () => {
             <button
               type="button"
               onClick={addCertification}
-              className="text-[#0B5B4D] font-medium mt-2 hover:underline cursor-pointer"
+              className="text-[#314370] font-medium mt-2 hover:underline cursor-pointer"
             >
               + Add Additional Certificate
             </button>
@@ -1887,7 +1887,7 @@ const Page = () => {
             <button
               type="button"
               onClick={handleAddProject}
-              className="text-[#0B5B4D] font-medium mt-3 hover:underline cursor-pointer"
+              className="text-[#314370] font-medium mt-3 hover:underline cursor-pointer"
             >
               + Add Additional Project
             </button>
@@ -1953,7 +1953,7 @@ const Page = () => {
                   ],
                 }))
               }
-              className="text-[#0B5B4D] font-medium mt-3 hover:underline cursor-pointer"
+              className="text-[#314370] font-medium mt-3 hover:underline cursor-pointer"
             >
               + Add More
             </button>
@@ -1974,7 +1974,7 @@ const Page = () => {
           <div className="flex gap-2">
             <button
               onClick={handlePreview}
-              className="px-8 py-2 border-2 border-[#0B5B4D] rounded-md text-[#0B5B4D]"
+              className="px-8 py-2 border-2 border-[#314370] rounded-md text-[#314370]"
             >
               Preview
             </button>
@@ -1983,7 +1983,7 @@ const Page = () => {
               disabled={step === tabs.length + 1}
               className={`px-8 py-2 border-2 rounded-md ${step === tabs.length + 1
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed border-gray-300"
-                : "bg-[#0B5B4D] border-[#0B5B4D] text-white"
+                : "bg-[#314370] border-[#314370] text-white"
                 }`}
             >
               {step === tabs.length ? "Finish" : "Next"}
@@ -2012,7 +2012,7 @@ const Page = () => {
           <div className="w-[90%] flex flex-col gap-1 items-center text-center">
             <h1
               onClick={handleChangeTemplate}
-              className="text-sm text-[#006666] underline cursor-pointer"
+              className="text-sm text-[#314370] underline cursor-pointer"
             >
               Change Template
             </h1>
@@ -2134,7 +2134,7 @@ const ChangeTemlatePopuop = ({
                     }}
                     key={tmpl.templateId}
                     className={`col-span-1 h-[260px] overflow-hidden cursor-pointer ${templateId === tmpl.templateId
-                      ? "border-4 border-[#009999]"
+                      ? "border-4 border-[#314370]"
                       : ""
                       }`}
                   >
@@ -2301,7 +2301,7 @@ const PublishPopup = ({
             <button
               onClick={handleSaveDraft}
               disabled={loading}
-              className="px-6 py-2 border-2 border-[#0B5B4D] text-[#0B5B4D] rounded-md font-medium disabled:opacity-60 hover:bg-[#0B5B4D]/10 transition-colors"
+              className="px-6 py-2 border-2 border-[#314370] text-[#314370] rounded-md font-medium disabled:opacity-60 hover:bg-[#314370]/10 transition-colors"
             >
               {loading ? "Saving..." : "Save Draft"}
             </button>
@@ -2311,8 +2311,8 @@ const PublishPopup = ({
               onClick={downloadUrl ? handleDownload : handlePublish}
               disabled={isPublishing}
               className={`px-6 py-2 flex items-center gap-2 rounded-md font-medium border-2 transition-colors ${downloadUrl
-                ? "border-[#0B5B4D] text-[#0B5B4D] bg-white hover:bg-[#0B5B4D]/10"
-                : "bg-[#0B5B4D] text-white border-[#0B5B4D] hover:bg-[#084B3F]"
+                ? "border-[#314370] text-[#314370] bg-white hover:bg-[#314370]/10"
+                : "bg-[#314370] text-white border-[#314370] hover:bg-[#314370]/85"
                 } disabled:opacity-60`}
             >
               {isPublishing ? (

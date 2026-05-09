@@ -131,7 +131,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
-      <SidebarFooter className="bg-[#071526] text-white border-t border-[#1C3B5A]/15">
+      <SidebarFooter className="bg-[#071526] text-white border-t border-[#9E2339]/30">
         <NavUser />
       </SidebarFooter>
       <SidebarRail />

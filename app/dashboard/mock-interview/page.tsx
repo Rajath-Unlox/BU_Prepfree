@@ -83,9 +83,9 @@ const MultiSelectDropdown = ({
 
   return (
     <div className="relative w-full" ref={wrapperRef}>
-      <div className="w-full mt-4 p-2 border border-black/20 rounded-md min-h-[50px] flex flex-wrap gap-2 items-center focus-within:ring-1 focus-within:ring-green-500 transition-all bg-white relative">
+      <div className="w-full mt-4 p-2 border border-black/20 rounded-md min-h-[50px] flex flex-wrap gap-2 items-center focus-within:ring-1 focus-within:ring-[#314370] transition-all bg-white relative">
         {selectedItems.map((item, idx) => (
-          <div key={idx} className="bg-[#EAFCF1] px-2 py-1 rounded text-sm text-[#0B5B4D] flex items-center gap-1 font-medium border border-[#0B5B4D]/20">
+          <div key={idx} className="bg-[#EBF0F8] px-2 py-1 rounded text-sm text-[#314370] flex items-center gap-1 font-medium border border-[#314370]/20">
             <span>{item}</span>
             <X
               size={14}
@@ -121,7 +121,7 @@ const MultiSelectDropdown = ({
           {filteredOptions.map((opt, idx) => (
             <li
               key={idx}
-              className="px-4 py-3 hover:bg-[#EAFCF1] cursor-pointer text-gray-700 font-medium"
+              className="px-4 py-3 hover:bg-[#EBF0F8] cursor-pointer text-gray-700 font-medium"
               onMouseDown={() => handleSelect(opt)} // Use onMouseDown to prevent blur before click
             >
               {opt}
@@ -130,7 +130,7 @@ const MultiSelectDropdown = ({
 
           {showCustomOption && (
             <li
-              className="px-4 py-3 hover:bg-[#EAFCF1] cursor-pointer text-black font-semibold border-t border-gray-100"
+              className="px-4 py-3 hover:bg-[#EBF0F8] cursor-pointer text-black font-semibold border-t border-gray-100"
               onMouseDown={() => handleSelect(inputValue.trim())}
             >
               Add "{inputValue}"
@@ -202,7 +202,7 @@ const DropdownInput = ({
           }}
           onFocus={() => setShowDropdown(true)}
           onKeyDown={onKeyDown}
-          className={`w-full mt-4 px-4 py-3 min-h-[50px] border border-black/20 rounded-md pr-14 outline-none focus:ring-1 focus:ring-green-500 transition-all ${isSelected ? 'font-bold text-black' : 'font-normal text-gray-700'}`}
+          className={`w-full mt-4 px-4 py-3 min-h-[50px] border border-black/20 rounded-md pr-14 outline-none focus:ring-1 focus:ring-[#314370] transition-all ${isSelected ? 'font-bold text-black' : 'font-normal text-gray-700'}`}
         />
         {/* Square box around the dropdown arrow */}
         <div className="absolute right-3 top-1/2 mt-2 -translate-y-1/2 p-2 bg-gray-50 border border-gray-200 rounded-md pointer-events-none">
@@ -226,7 +226,7 @@ const DropdownInput = ({
             filteredOptions.map((opt, idx) => (
               <li
                 key={idx}
-                className="px-4 py-3 hover:bg-[#EAFCF1] cursor-pointer text-gray-700 font-medium"
+                className="px-4 py-3 hover:bg-[#EBF0F8] cursor-pointer text-gray-700 font-medium"
                 onClick={() => {
                   onSelect(opt);
                   setShowDropdown(false);
@@ -368,11 +368,11 @@ const Page = () => {
             onClick={() => setActiveTab(tab.id)}
             className={`w-fit px-6 py-3 cursor-pointer transition-colors duration-200
               ${activeTab === tab.id
-                ? "bg-[#FFDC85] font-semibold"
+                ? "bg-[#FFF4CB] font-semibold"
                 : "bg-white text-gray-700"
               }
               ${idx !== tabs.length - 1 ? "border-r-2 border-black/20" : ""}
-              hover:bg-[#FFDC85]/50
+              hover:bg-[#FFF4CB]/50
             `}
           >
             {tab.label}
@@ -470,7 +470,7 @@ const Page = () => {
                   Job Description <span className="text-sm font-normal text-black/40">(Optional)</span>
                 </h1>
                 <textarea
-                  className="w-full mt-2 px-4 py-3 border border-black/20 rounded-md outline-none focus:ring-1 focus:ring-green-500 transition-all resize-none text-gray-700 text-sm"
+                  className="w-full mt-2 px-4 py-3 border border-black/20 rounded-md outline-none focus:ring-1 focus:ring-[#314370] transition-all resize-none text-gray-700 text-sm"
                   placeholder="Enter the job description here to get more tailored interview questions..."
                   rows={4}
                   value={jobDescription}
@@ -489,7 +489,7 @@ const Page = () => {
                       value="easy"
                       checked={difficulty === "easy"}
                       onChange={() => setDifficulty("easy")}
-                      className="text-green-600 focus:ring-green-500 cursor-pointer"
+                      className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                     />
                     <label
                       htmlFor="easy"
@@ -506,7 +506,7 @@ const Page = () => {
                       value="medium"
                       checked={difficulty === "medium"}
                       onChange={() => setDifficulty("medium")}
-                      className="text-green-600 focus:ring-green-500 cursor-pointer"
+                      className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                     />
                     <label
                       htmlFor="medium"
@@ -523,7 +523,7 @@ const Page = () => {
                       value="hard"
                       checked={difficulty === "hard"}
                       onChange={() => setDifficulty("hard")}
-                      className="text-green-600 focus:ring-green-500 cursor-pointer"
+                      className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                     />
                     <label htmlFor="hard" className="cursor-pointer font-medium">
                       Hard
@@ -541,7 +541,7 @@ const Page = () => {
                       value="tech&behavioral"
                       checked={queType === "tech&behavioral"}
                       onChange={() => setQueType("tech&behavioral")}
-                      className="text-green-600 focus:ring-green-500 cursor-pointer"
+                      className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                     />
                     <label
                       htmlFor="tech&behavioral"
@@ -558,7 +558,7 @@ const Page = () => {
                       value="behavioral"
                       checked={queType === "behavioral"}
                       onChange={() => setQueType("behavioral")}
-                      className="text-green-600 focus:ring-green-500 cursor-pointer"
+                      className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                     />
                     <label
                       htmlFor="behavioral"
@@ -621,7 +621,7 @@ const Page = () => {
                     value="easy"
                     checked={difficulty === "easy"}
                     onChange={() => setDifficulty("easy")}
-                    className="text-green-600 focus:ring-green-500 cursor-pointer"
+                    className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                   />
                   <label htmlFor="easy" className="cursor-pointer font-medium">
                     Easy
@@ -635,7 +635,7 @@ const Page = () => {
                     value="medium"
                     checked={difficulty === "medium"}
                     onChange={() => setDifficulty("medium")}
-                    className="text-green-600 focus:ring-green-500 cursor-pointer"
+                    className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                   />
                   <label
                     htmlFor="medium"
@@ -652,7 +652,7 @@ const Page = () => {
                     value="hard"
                     checked={difficulty === "hard"}
                     onChange={() => setDifficulty("hard")}
-                    className="text-green-600 focus:ring-green-500 cursor-pointer"
+                    className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                   />
                   <label htmlFor="hard" className="cursor-pointer font-medium">
                     Hard
@@ -670,7 +670,7 @@ const Page = () => {
                     value="tech&behavioral"
                     checked={queType === "tech&behavioral"}
                     onChange={() => setQueType("tech&behavioral")}
-                    className="text-green-600 focus:ring-green-500 cursor-pointer"
+                    className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                   />
                   <label
                     htmlFor="tech&behavioral"
@@ -687,7 +687,7 @@ const Page = () => {
                     value="behavioral"
                     checked={queType === "behavioral"}
                     onChange={() => setQueType("behavioral")}
-                    className="text-green-600 focus:ring-green-500 cursor-pointer"
+                    className="text-[#314370] focus:ring-[#314370] cursor-pointer"
                   />
                   <label
                     htmlFor="behavioral"
@@ -854,7 +854,7 @@ const TakeInterview = ({
       <button
         onClick={handlePopup}
         disabled={isDisabled}
-        className={`w-1/2 flex gap-3 items-center mt-4 h-auto py-3 px-6 flex items-center justify-center rounded-md text-white bg-[#0B5B4D] ${isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+        className={`w-1/2 flex gap-3 items-center mt-4 h-auto py-3 px-6 flex items-center justify-center rounded-md text-white bg-[#9E2339] ${isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
           }`}
       >
         Take Mock Interview
@@ -884,7 +884,7 @@ const TakeInterview = ({
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-2 bg-[#EDFFF2] px-4 py-2 rounded-md"
+                  className="flex items-center gap-2 bg-[#EBF0F8] px-4 py-2 rounded-md"
                 >
                   {item.icon && (
                     <item.icon className="w-5 h-5 text-gray-600" />
@@ -930,7 +930,7 @@ const TakeInterview = ({
                 <input
                   type="checkbox"
                   id="ack-instructions"
-                  className="w-5 h-5 cursor-pointer accent-[#0B5B4D]"
+                  className="w-5 h-5 cursor-pointer accent-[#314370]"
                   checked={hasReadInstructions}
                   onChange={(e) => setHasReadInstructions(e.target.checked)}
                 />
@@ -943,7 +943,7 @@ const TakeInterview = ({
                 <button
                   onClick={handleStartInterview}
                   disabled={loading || !hasReadInstructions}
-                  className={`px-8 py-2.5 bg-[#0B5B4D] text-white rounded-md flex items-center gap-2 font-medium transition-all ${(loading || !hasReadInstructions) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#094d41] shadow-md'
+                  className={`px-8 py-2.5 bg-[#9E2339] text-white rounded-md flex items-center gap-2 font-medium transition-all ${(loading || !hasReadInstructions) ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#9E2339]/85 shadow-md'
                     }`}
                 >
                   {loading && <Loader2 className="animate-spin" size={16} />}

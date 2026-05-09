@@ -71,7 +71,7 @@ const Page = () => {
           </div>
           <button
             onClick={handleClick}
-            className={`flex items-center gap-2 text-[#09AD5B] pr-2 cursor-pointer ${
+            className={`flex items-center gap-2 text-[#314370] pr-2 cursor-pointer ${
               filterOpen ? "hidden" : ""
             }`}
           >
@@ -185,7 +185,7 @@ function TopicsList({ categories }: { categories: string[] }) {
         (category: string, index: number) => (
           <div
             key={index}
-            className="bg-[#E2FFEA] text-[#00241E]/67 px-2 py-1 rounded-full text-[10px] flex items-center justify-center"
+            className="bg-[#EBF0F8] text-[#314370]/80 px-2 py-1 rounded-full text-[10px] flex items-center justify-center"
           >
             {category}
           </div>
@@ -246,7 +246,7 @@ const TakeTest = ({ canTake, assessmentId, assessmentName, queNo, time, attempts
     <>
       <button
         onClick={handleButtonClick}
-        className="w-full flex gap-3 items-center mt-4 h-auto py-2 flex items-center justify-center rounded-xl border-2 border-[#0B5B4D] cursor-pointer text-[#0B5B4D] font-medium hover:bg-[#0B5B4D] hover:text-white"
+        className="w-full flex gap-3 items-center mt-4 h-auto py-2 flex items-center justify-center rounded-xl border-2 border-[#314370] cursor-pointer text-[#314370] font-medium hover:bg-[#314370] hover:text-white"
       >
         {getButtonLabel()}
         <ArrowUpRight size={20} />
@@ -267,7 +267,7 @@ const TakeTest = ({ canTake, assessmentId, assessmentName, queNo, time, attempts
                 { label: `${queNo} questions`, icon: FileText },
                 { label: `${attemptsLeft} attempts left`, icon: AlertCircle },
                 ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 bg-[#EDFFF2] px-4 py-2 rounded-md">
+                <div key={idx} className="flex items-center gap-2 bg-[#EBF0F8] px-4 py-2 rounded-md">
                     {item.icon && <item.icon className="w-5 h-5 text-gray-600" />}
                     <span>{item.label}</span>
                 </div>
@@ -286,7 +286,7 @@ const TakeTest = ({ canTake, assessmentId, assessmentName, queNo, time, attempts
             
             <div className="flex gap-1 items-center mt-6">
                 <div className="flex items-center gap-2">
-                <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} className="w-5 h-5 accent-[#0B5B4D]" />
+                <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} className="w-5 h-5 accent-[#314370]" />
                 <label className="text-[#1A1A1A]/65 text-sm cursor-pointer">I have read all the instructions</label>
                 </div>
             </div>
@@ -296,7 +296,7 @@ const TakeTest = ({ canTake, assessmentId, assessmentName, queNo, time, attempts
                 disabled={!isChecked}
                 onClick={handleStart}
                 className={`px-8 py-2 text-white rounded-md transition font-medium ${
-                  !isChecked ? "bg-gray-300 cursor-not-allowed" : "bg-[#0B5B4D] hover:bg-[#094d41]"
+                  !isChecked ? "bg-gray-300 cursor-not-allowed" : "bg-[#9E2339] hover:bg-[#9E2339]/85"
                 }`}
               >
                 Proceed to System Check

@@ -47,7 +47,7 @@ const TrendValue = ({ value }: { value: number | undefined }) => {
   const isPositive = value > 0;
 
   return (
-    <span className={`${isPositive ? 'text-[#8ED251]' : 'text-red-500'}`}>
+    <span className={`${isPositive ? 'text-[#314370]' : 'text-red-500'}`}>
       {isPositive ? "Increased" : "Decreased"} from last sessions
     </span>
   );
@@ -61,7 +61,7 @@ const TrendDirect = ({ value, suffix = "%", inverse = false }: { value: number |
   const isGood = inverse ? !isPositive : isPositive;
 
   return (
-    <span className={`${isGood ? 'text-[#17724E]' : 'text-red-600'} pl-1 font-semibold flex gap-1 items-center`}>
+    <span className={`${isGood ? 'text-[#314370]' : 'text-red-600'} pl-1 font-semibold flex gap-1 items-center`}>
       <TrendingUp size={18} className={isPositive ? "" : "rotate-180"} />
       {Math.abs(value)}{suffix}
     </span>
@@ -173,7 +173,7 @@ const page = () => {
         <button
           onClick={handleDownloadReport}
           disabled={downloading}
-          className="flex items-center justify-center gap-2 px-4 py-2 bg-[#0B5B4D] text-white rounded-md hover:bg-[#054238] transition-colors text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-[#314370] text-white rounded-md hover:bg-[#314370]/85 transition-colors text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {downloading ? <Loader2 size={16} className="animate-spin" /> : <Download size={16} />}
           {downloading ? 'Generating...' : 'Download Report'}
@@ -181,7 +181,7 @@ const page = () => {
       </HeaderAction>
       <div ref={pageRef}>
         <div className="w-full flex gap-4 h-auto ">
-          <Card className="w-1/4 shadow-none bg-gradient-to-b from-[#054238] to-[#237E54]">
+          <Card className="w-1/4 shadow-none bg-gradient-to-b from-[#314370] to-[#1a2a50]">
             <CardHeader>
               <CardDescription className="text-white font-medium">
                 Overall Interview Score
@@ -245,7 +245,7 @@ const page = () => {
                   onClick={() => setActiveTab(tab.id)}
                   className={`w-fit px-6 py-2 cursor-pointer transition-colors duration-200 text-sm font-medium
                     ${activeTab === tab.id
-                      ? "bg-[#FFDC85] border-b-2 border-[#E5C265]"
+                      ? "bg-[#FFF4CB] border-b-2 border-[#e6d96e]"
                       : "bg-white text-gray-700 hover:bg-gray-50"
                     }
                     ${idx !== tabs.length - 1 ? "border-r border-black/10" : ""}
@@ -275,7 +275,7 @@ const page = () => {
                 title="Filler Words"
                 data={overallPercent?.speech?.filler_words}
                 dataKey="count"
-                color="#69BE81"
+                color="#9E2339"
                 unit="Count"
                 trend={overallPercent?.trends?.metrics?.filler_words}
                 description="Your Filler Tone"
@@ -303,7 +303,7 @@ const page = () => {
                 title="Relevance to Question"
                 data={overallPercent?.response?.relevance}
                 dataKey="percent"
-                color="#69BE81"
+                color="#9E2339"
                 unit="%"
                 description="Your answer relevance"
                 trend={overallPercent?.trends?.metrics?.relevance}
@@ -331,7 +331,7 @@ const page = () => {
                 title="Problem Solving"
                 data={overallPercent?.competency?.problem_solving}
                 dataKey="percent"
-                color="#69BE81"
+                color="#314370"
                 unit="%"
                 description="Your problem solving"
                 trend={overallPercent?.trends?.metrics?.problem_solving}
@@ -482,9 +482,9 @@ export function AnalysisLineChart({
             <Line
               dataKey={dataKey}
               type="linear"
-              stroke="#066841"
+              stroke="#314370"
               strokeWidth={2}
-              dot={<Dot r={4} fill="#066841" />}
+              dot={<Dot r={4} fill="#314370" />}
             />
           </LineChart>
         </ChartContainer>
@@ -532,7 +532,7 @@ export function AnalysisAreaChart({
           >
             <defs>
               <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#066841" />
+                <stop offset="0%" stopColor="#314370" />
                 <stop offset="100%" stopColor="#ffffff" />
               </linearGradient>
             </defs>
@@ -553,10 +553,10 @@ export function AnalysisAreaChart({
               type="linear"
               fill="url(#gradient)"
               fillOpacity={1}
-              stroke="#066841"
+              stroke="#314370"
               strokeWidth={2}
               dot={
-                <Dot r={5} fill="#ffffff" stroke="#066841" strokeWidth={2} />
+                <Dot r={5} fill="#ffffff" stroke="#314370" strokeWidth={2} />
               }
             />
           </AreaChart>

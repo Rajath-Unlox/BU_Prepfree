@@ -256,7 +256,7 @@ function ProfileImageUploader({ user }: any) {
               </button>
               <button
                 disabled={loading}
-                className="px-4 py-2 bg-[#0B5B4D] text-white rounded"
+                className="px-4 py-2 bg-[#314370] text-white rounded"
                 onClick={handleCropComplete}
               >
                 {loading ? "Saving..." : "Save"}
@@ -624,7 +624,7 @@ const AboutSection: React.FC<Props> = ({ user: initialUser, onUpdated }) => {
                       />
                       <h1>{social.name}</h1>
                     </div>
-                    <div className="text-sm flex items-center justify-center bg-[#0B5B4D] text-white font-bold rounded-full w-5 h-5 p-1">
+                    <div className="text-sm flex items-center justify-center bg-[#314370] text-white font-bold rounded-full w-5 h-5 p-1">
                       <Plus size={10} />
                     </div>
                   </button>
@@ -637,7 +637,7 @@ const AboutSection: React.FC<Props> = ({ user: initialUser, onUpdated }) => {
                       onChange={(e) =>
                         handleLinkChange(social.key, e.target.value)
                       }
-                      className="border border-black/20 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#0B5B4D]"
+                      className="border border-black/20 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#314370]"
                     />
                   )}
                 </div>
@@ -653,12 +653,12 @@ const AboutSection: React.FC<Props> = ({ user: initialUser, onUpdated }) => {
               {(formData.languages || []).map((lang, i) => (
                 <div
                   key={i}
-                  className="bg-[#0B5B4D]/10 text-[#0B5B4D] px-2 py-1 rounded-md flex items-center gap-1 text-sm"
+                  className="bg-[#314370]/10 text-[#314370] px-2 py-1 rounded-md flex items-center gap-1 text-sm"
                 >
                   {lang.name}
                   <button
                     onClick={() => handleRemove(lang.name)}
-                    className="text-[#0B5B4D] font-bold hover:text-red-500"
+                    className="text-[#314370] font-bold hover:text-red-500"
                   >
                     ×
                   </button>
@@ -701,7 +701,7 @@ const AboutSection: React.FC<Props> = ({ user: initialUser, onUpdated }) => {
               </button>
               <button
                 onClick={handleSave}
-                className="px-8 py-2 border-2 rounded-md cursor-pointer flex gap-2 items-center bg-[#0B5B4D] border-[#0B5B4D] text-white"
+                className="px-8 py-2 border-2 rounded-md cursor-pointer flex gap-2 items-center bg-[#314370] border-[#314370] text-white"
               >
                 Save
               </button>
@@ -749,7 +749,7 @@ const AboutSection: React.FC<Props> = ({ user: initialUser, onUpdated }) => {
                 {formData.profileInfo?.profileHeadline || "Headline"}
               </p>
 
-              <p className="text-md text-[#0B5B4D] font-medium underline">
+              <p className="text-md text-[#314370] font-medium underline">
                 {formData.email || "Email"}
               </p>
 

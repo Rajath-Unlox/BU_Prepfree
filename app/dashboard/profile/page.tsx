@@ -483,7 +483,7 @@ const page = () => {
             </p>
           </div>
           <div className="w-full flex justify-end items-center mt-2">
-            <button className="text-[#0B5B4D] font-medium">Learn More</button>
+            <button className="text-[#314370] font-medium">Learn More</button>
           </div>
         </Link>
       </div>

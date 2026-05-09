@@ -81,7 +81,7 @@ const page = () => {
           Your Assessment Performance Report For Web Development
         </h1>
 
-        <div className="w-fit text-white flex items-center px-2 py-2 bg-[#0B5B4D] rounded-md gap-1 cursor-pointer">
+        <div className="w-fit text-white flex items-center px-2 py-2 bg-[#9E2339] rounded-md gap-1 cursor-pointer">
           <Download size={15} />
           <h1>Export List</h1>
         </div>
@@ -89,7 +89,7 @@ const page = () => {
 
       <div className="w-full flex gap-4 h-1/2 mt-4">
         {/* Left Section */}
-        <div className="border h-full rounded-xl bg-gradient-to-b from-[#053F35] to-[#17C1A3] flex flex-col items-center justify-between p-3 w-1/4">
+        <div className="border h-full rounded-xl bg-gradient-to-b from-[#314370] to-[#1a2a50] flex flex-col items-center justify-between p-3 w-1/4">
           <h1 className="w-full text-white font-medium">Overall Score</h1>
 
           <div className="w-full flex items-center justify-center">
@@ -264,7 +264,7 @@ export function ChartBarDefault({ queNo, questions }: any) {
                 x2="0%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#DDE9E5" />
+                <stop offset="0%" stopColor="#EBF0F8" />
                 <stop offset="100%" stopColor="#ffffff" />
               </linearGradient>
 
@@ -286,7 +286,7 @@ export function ChartBarDefault({ queNo, questions }: any) {
                 x2="0%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#066841" />
+                <stop offset="0%" stopColor="#314370" />
                 <stop offset="100%" stopColor="#ffffff" />
               </linearGradient>
 

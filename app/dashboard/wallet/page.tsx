@@ -168,7 +168,7 @@ const Page = () => {
           }
         },
         prefill, 
-        theme: { color: "#0B5B4D" },
+        theme: { color: "#314370" },
       };
 
       const razorpay = new (window as any).Razorpay(options);
@@ -200,13 +200,13 @@ const Page = () => {
                   className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white"
                 />
               ))}
-              <span className="bg-[#E6FFED] text-[#1e1e1e] text-sm px-3 py-1 rounded-full font-medium flex items-center justify-center">
+              <span className="bg-[#EBF0F8] text-[#314370] text-sm px-3 py-1 rounded-full font-medium flex items-center justify-center">
                 Trusted by 100+ Colleges
               </span>
             </div>
             <Link
               href="/dashboard/wallet/history"
-              className="text-[#0B5B4D] font-bold underline text-lg underline-offset-4 mb-2"
+              className="text-[#314370] font-bold underline text-lg underline-offset-4 mb-2"
             >
               View Transaction History
             </Link>
@@ -227,12 +227,12 @@ const Page = () => {
             className={`group relative flex flex-col justify-between rounded-xl border transition-all duration-300 ease-in-out cursor-pointer
               ${
                 plan.isPopular
-                  ? "border-[#0B5B4D] h-[102%] z-10 bg-[#0B5B4D] hover:shadow-xl hover:-translate-y-2 hover:z-20"
-                  : "border-gray-200 hover:border-[#0B5B4D] hover:shadow-xl hover:-translate-y-2 hover:z-20 bg-white"
+                  ? "border-[#314370] h-[102%] z-10 bg-[#314370] hover:shadow-xl hover:-translate-y-2 hover:z-20"
+                  : "border-gray-200 hover:border-[#314370] hover:shadow-xl hover:-translate-y-2 hover:z-20 bg-white"
               }`}
           >
             {plan.isPopular && (
-              <div className="bg-[#0B5B4D] text-white text-center py-2 rounded-t-[10px] text-sm font-medium flex items-center justify-center gap-2">
+              <div className="bg-[#314370] text-white text-center py-2 rounded-t-[10px] text-sm font-medium flex items-center justify-center gap-2">
                 <span className="text-white">
                   <Image src={stars} alt="" className="h-4 w-auto" />
                 </span>{" "}
@@ -246,7 +246,7 @@ const Page = () => {
               }`}
             >
               <div>
-                <h2 className="text-xl font-medium text-[#1e1e1e] group-hover:text-[#064e3b] transition-colors">
+                <h2 className="text-xl font-medium text-[#1e1e1e] group-hover:text-[#314370] transition-colors">
                   {plan.name}
                 </h2>
                 <p className="text-md text-[#1e1e1e]/80 mt-2 leading-relaxed">
@@ -254,7 +254,7 @@ const Page = () => {
                 </p>
 
                 <div className="my-6">
-                  <h1 className="text-3xl font-bold text-[#0B5B4D]">
+                  <h1 className="text-3xl font-bold text-[#314370]">
                     {plan.price}
                   </h1>
                   <p className="text-sm font-semibold text-[#1e1e1e]/60 mt-1">
@@ -267,7 +267,7 @@ const Page = () => {
                     <div key={fIdx} className="flex items-center gap-3">
                       <div
                         className={`w-5 h-5 rounded-full flex items-center justify-center ${
-                          plan.isPopular ? "bg-[#0B5B4D]" : "bg-[#E6FFED]"
+                          plan.isPopular ? "bg-[#314370]" : "bg-[#EBF0F8]"
                         }`}
                       >
                         <Check
@@ -291,8 +291,8 @@ const Page = () => {
                   disabled={processingPlan === plan.id}
                   className={`w-full py-3 rounded-lg font-medium text-sm transition-colors ${
                     plan.isPopular
-                      ? "bg-[#0B5B4D] text-white hover:bg-[#065f46]"
-                      : "border border-[#ECAD01] text-[#1f2937] hover:bg-[#fffbeb]"
+                      ? "bg-[#9E2339] text-white hover:bg-[#9E2339]/85"
+                      : "border border-[#FFF4CB] text-[#314370] bg-[#FFF4CB] hover:bg-[#FFF4CB]/70"
                   } ${
                     processingPlan === plan.id
                       ? "opacity-50 cursor-not-allowed"
@@ -355,7 +355,7 @@ const Page = () => {
                 <div
                   className={`rounded-full p-1 transition-transform duration-200 ${
                     openFaqIndex === index
-                      ? "bg-[#0B5B4D] text-white rotate-180"
+                      ? "bg-[#314370] text-white rotate-180"
                       : "bg-gray-200 text-gray-500"
                   }`}
                 >

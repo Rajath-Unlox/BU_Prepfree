@@ -78,14 +78,14 @@ const Page = () => {
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center ${
                     t.status === "Success" 
-                      ? "bg-[#d1fae5]" 
+                      ? "bg-[#EBF0F8]" 
                       : t.status === "Failed" 
                       ? "bg-red-100" 
                       : "bg-yellow-100"
                   }`}
                 >
                   {t.status === "Success" ? (
-                    <CheckCircle2 className="text-[#064e3b]" size={24} />
+                    <CheckCircle2 className="text-[#314370]" size={24} />
                   ) : t.status === "Failed" ? (
                     <XCircle className="text-red-600" size={24} />
                   ) : (
@@ -115,7 +115,7 @@ const Page = () => {
                   <span
                     className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                       t.status === "Success"
-                        ? "bg-green-100 text-green-700"
+                        ? "bg-[#EBF0F8] text-[#314370]"
                         : t.status === "Failed"
                         ? "bg-red-100 text-red-700"
                         : "bg-yellow-100 text-yellow-700"
@@ -124,7 +124,7 @@ const Page = () => {
                     {t.status}
                   </span>
                 </div>
-                <button className="p-2 hover:bg-gray-100 rounded-full transition-colors group-hover:text-[#0B5B4D] text-gray-400">
+                <button className="p-2 hover:bg-gray-100 rounded-full transition-colors group-hover:text-[#314370] text-gray-400">
                   <FileText size={20} />
                 </button>
               </div>

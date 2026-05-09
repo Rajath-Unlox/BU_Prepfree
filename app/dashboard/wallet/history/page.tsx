@@ -20,13 +20,13 @@ interface Transaction {
 const getIcon = (type: string) => {
   switch (type) {
     case "assessment":
-      return <FileText className="text-[#0B5B4D]" size={20} />;
+      return <FileText className="text-[#314370]" size={20} />;
     case "mock":
-      return <Mic className="text-[#0B5B4D]" size={20} />;
+      return <Mic className="text-[#314370]" size={20} />;
     case "plan":
-      return <Medal className="text-[#0B5B4D]" size={20} />;
+      return <Medal className="text-[#314370]" size={20} />;
     default:
-      return <Zap className="text-[#0B5B4D]" size={20} />;
+      return <Zap className="text-[#314370]" size={20} />;
   }
 };
 
@@ -123,7 +123,7 @@ const Page = () => {
           </p>
         </div>
 
-        <div className="bg-[#0B5B4D] text-white px-4 py-3 rounded-lg flex items-center gap-2 shadow-sm">
+        <div className="bg-[#314370] text-white px-4 py-3 rounded-lg flex items-center gap-2 shadow-sm">
           <div className="rounded-full">
             <Image src={credits} alt="" className="w-4 h-4"/>
           </div>
@@ -134,7 +134,7 @@ const Page = () => {
       </div>
 
       {/* Summary Card */}
-      <div className="w-full bg-[#EAF6EE] rounded-xl p-4 flex items-center justify-between">
+      <div className="w-full bg-[#EBF0F8] rounded-xl p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="bg-white p-2 rounded-full shadow-sm">
             <div className="bg-[#fbbf24] rounded-full p-1">
@@ -145,7 +145,7 @@ const Page = () => {
             Total Credit Used
           </h2>
         </div>
-        <span className="text-2xl font-bold text-[#0B5B4D]">
+        <span className="text-2xl font-bold text-[#314370]">
           {loading ? "..." : totalUsed}
         </span>
       </div>

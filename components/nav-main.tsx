@@ -75,7 +75,7 @@ export function NavMain({
 
   return (
     <SidebarGroup className={`gap-1 ${open ? "p-0 pr-2" : ""}`}>
-      <SidebarGroupLabel className="text-[#9FB3C8]">
+      <SidebarGroupLabel className="text-[#FFF4CB]/70">
         MAIN
       </SidebarGroupLabel>
 
@@ -110,7 +110,7 @@ export function NavMain({
                             }`}
                         >
                           <div
-                            className={`w-full h-full relative ${isSelected ? "bg-[#102A43] rounded-[10px]" : ""
+                            className={`w-full h-full relative ${isSelected ? "bg-[#9E2339] rounded-[10px]" : ""
                               }`}
                           >
                             <div
@@ -122,7 +122,7 @@ export function NavMain({
 
                             <div
                               className={`w-full h-full rounded-[10px] transition-transform ease-in-out duration-200 ${isSelected
-                                  ? "bg-[#1E90FF]/25 shadow-[inset_0px_0px_15px_4px_rgba(0,_0,_0,_0.2)]"
+                                  ? "bg-[#9E2339]/25 shadow-[inset_0px_0px_15px_4px_rgba(0,_0,_0,_0.2)]"
                                   : ""
                                 }`}
                             ></div>
@@ -138,7 +138,7 @@ export function NavMain({
                         }`}
                     >
                       <div
-                        className={`w-full relative ${isSelected ? "bg-[#102A43] rounded-[10px]" : ""
+                        className={`w-full relative ${isSelected ? "bg-[#9E2339] rounded-[10px]" : ""
                           }`}
                       >
                         <div
@@ -153,7 +153,7 @@ export function NavMain({
                           onClick={() => handleItemClick(item)}
                           tooltip={item.title}
                           className={`w-full rounded-[10px] transition-transform ease-in-out duration-200 ${isSelected
-                              ? "bg-[#1E90FF]/25 shadow-[inset_0px_0px_15px_4px_rgba(0,_0,_0,_0.2)] py-5 px-4"
+                              ? "bg-[#9E2339]/25 shadow-[inset_0px_0px_15px_4px_rgba(0,_0,_0,_0.2)] py-5 px-4"
                               : ""
                             }`}
                         >
@@ -181,7 +181,7 @@ export function NavMain({
                   </div>
 
                   {hasSubItems && clickedItem === item.title && (
-                    <SidebarMenuSub className="mt-0 p-0 relative gap-3 border-l border-[#1C3B5A] pl-3">
+                    <SidebarMenuSub className="mt-0 p-0 relative gap-3 border-l border-[#FFF4CB]/30 pl-3">
                       {item.items?.map((subItem) => {
                         const isSubSelected =
                           normalize(subItem.url) === deepestMatch;
@@ -192,8 +192,8 @@ export function NavMain({
                               <Link
                                 href={subItem.url}
                                 className={`text-white transition-all ${isSubSelected
-                                    ? "text-[#1E90FF] font-medium"
-                                    : "hover:text-[#2EA8FF]"
+                                    ? "text-[#FFF4CB] font-medium"
+                                    : "hover:text-[#FFF4CB]/70"
                                   }`}
                               >
                                 {subItem.title}
@@ -203,7 +203,7 @@ export function NavMain({
                         );
                       })}
 
-                      <div className="w-1 h-1 rounded-full bg-[#1E90FF] absolute bottom-0 left-[-2px]" />
+                      <div className="w-1 h-1 rounded-full bg-[#9E2339] absolute bottom-0 left-[-2px]" />
                     </SidebarMenuSub>
                   )}
                 </div>
