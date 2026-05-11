@@ -117,7 +117,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <Image
             src={logo}
             alt="Logo"
-            className="w-[40%] pt-4"
+            className="w-[20%] pt-1"
           />
         ) : (
           <Image
