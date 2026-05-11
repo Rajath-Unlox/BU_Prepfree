@@ -128,17 +128,18 @@ const ForgotPasswordContent = () => {
                         transform: "scale(2)"
                     }}
                 />
+                <div className="absolute inset-0 z-0 bg-[#071526]/60" />
 
 
                 {/* Outer Card Wrapper with Shining Edge */}
-                <div className="relative z-10 w-[1000px] max-w-[95vw] h-[600px] max-h-[95vh] p-[2px] rounded-[24px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(2,100,81,0.5)] flex bg-[#002522]">
+                <div className="relative z-10 w-[1000px] max-w-[95vw] h-[600px] max-h-[95vh] p-[2px] rounded-[24px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(49,67,112,0.5)] flex bg-[#071526]">
                     {/* Spinning Gradient for Shining Edge */}
                     <div className="absolute top-1/2 left-1/2 w-[200%] aspect-square -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                        <div className="w-full h-full animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#81EFAD_180deg,transparent_180deg_300deg,#81EFAD_360deg)]" />
+                        <div className="w-full h-full animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#9FB3C8_180deg,transparent_180deg_300deg,#9FB3C8_360deg)]" />
                     </div>
 
                     {/* Actual Card Content */}
-                    <div className="relative z-10 w-full h-full flex rounded-[22px] overflow-hidden bg-gradient-to-t from-[#002522] via-[#026451] to-[#002522]">
+                    <div className="relative z-10 w-full h-full flex rounded-[22px] overflow-hidden bg-gradient-to-t from-[#071526] via-[#314370] to-[#071526]">
                     {/* Left Section */}
                     <div className="w-1/2 flex flex-col items-center justify-center bg-white text-black h-full p-8 relative">
 
@@ -169,14 +170,14 @@ const ForgotPasswordContent = () => {
                                 <button
                                     onClick={handleSendOTP}
                                     disabled={loading}
-                                    className="w-full bg-[#026451] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-4 hover:bg-[#028965] transition"
+                                    className="w-full bg-[#071526] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-4 hover:bg-[#314370] transition"
                                 >
                                     {loading ? "Sending OTP..." : "Send OTP"}
                                 </button>
 
                                 <p className="text-sm text-center font-medium mt-4">
                                     Remember your password?{" "}
-                                    <Link href="/login" className="text-[#026451]">
+                                    <Link href="/login" className="text-[#314370]">
                                         Login
                                     </Link>
                                 </p>
@@ -191,7 +192,7 @@ const ForgotPasswordContent = () => {
                                     <h1 className="text-xl font-medium mt-4">Verify OTP</h1>
                                     <p className="text-xs text-gray-600">
                                         We've sent a 6-digit verification code to{" "}
-                                        <span className="text-[#026451] font-medium">{email}</span>
+                                        <span className="text-[#314370] font-medium">{email}</span>
                                     </p>
                                 </div>
 
@@ -212,7 +213,7 @@ const ForgotPasswordContent = () => {
                                 <button
                                     onClick={handleVerifyOTP}
                                     disabled={loading}
-                                    className="w-full bg-[#026451] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-6 hover:bg-[#028965] transition"
+                                    className="w-full bg-[#071526] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-6 hover:bg-[#314370] transition"
                                 >
                                     Verify OTP
                                 </button>
@@ -220,24 +221,21 @@ const ForgotPasswordContent = () => {
                                 <p className="text-center mt-4 text-xs text-gray-500">
                                     {resendTimer > 0 ? (
                                         <span className="text-gray-400">
-                                            Resend OTP in <span className="text-[#026451] font-bold">{resendTimer}s</span>
+                                            Resend OTP in <span className="text-[#314370] font-bold">{resendTimer}s</span>
                                         </span>
                                     ) : (
-                                        <span
-                                            className="cursor-pointer hover:text-black hover:underline transition-all"
-                                            onClick={handleResendOTP}
-                                        >
-                                            Didn't receive code? <b className="text-[#026451]">Resend</b>
-                                        </span>
+                                        <p className="text-sm text-center font-medium mt-4 cursor-pointer" onClick={handleResendOTP}>
+                                            Didn't receive code? <b className="text-[#314370]">Resend</b>
+                                        </p>
                                     )}
-                                </p>
 
-                                <button
-                                    onClick={() => setStep("email")}
-                                    className="text-[#026451] text-xs mt-2 hover:underline"
-                                >
-                                    ← Change email
-                                </button>
+                                    <button
+                                        onClick={() => setStep("email")}
+                                        className="text-[#314370] text-xs mt-2 hover:underline"
+                                    >
+                                        ← Change email
+                                    </button>
+                                </p>
                             </div>
                         )}
 
@@ -301,7 +299,7 @@ const ForgotPasswordContent = () => {
                                 <button
                                     onClick={handleResetPassword}
                                     disabled={loading}
-                                    className="w-full bg-[#026451] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-4 hover:bg-[#028965] transition"
+                                    className="w-full bg-[#071526] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-4 hover:bg-[#314370] transition"
                                 >
                                     {loading ? "Resetting..." : "Reset Password"}
                                 </button>
