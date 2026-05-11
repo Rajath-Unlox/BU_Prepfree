@@ -162,184 +162,184 @@ const SignUpContent = () => {
 
       <Toaster position="top-right" />
       {/* Outer Card Wrapper with Shining Edge */}
-      <div className="relative z-10 w-[1000px] max-w-[95vw] h-[600px] max-h-[95vh] p-[2px] rounded-[24px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(2,100,81,0.5)] flex bg-[#002522]">
-        
+      <div className="relative z-10 w-[1000px] max-w-[95vw] h-[600px] max-h-[95vh] p-[2px] rounded-[24px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(31,43,70,0.5)] flex bg-[#071526]">
+
         {/* Spinning Gradient for Shining Edge */}
         <div className="absolute top-1/2 left-1/2 w-[200%] aspect-square -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-          <div className="w-full h-full animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#81EFAD_180deg,transparent_180deg_300deg,#81EFAD_360deg)]" />
+          <div className="w-full h-full animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#314370_180deg,transparent_180deg_300deg,#314370_360deg)]" />
         </div>
 
         {/* Actual Card Content */}
-        <div className="relative z-10 w-full h-full flex rounded-[22px] overflow-hidden bg-gradient-to-t from-[#002522] via-[#026451] to-[#002522]">
+        <div className="relative z-10 w-full h-full flex rounded-[22px] overflow-hidden bg-gradient-to-t from-[#071526] via-[#314370] to-[#071526]">
           <div className="w-1/2 flex flex-col items-center justify-center bg-white text-black h-full p-8 relative">
-          {step === "signup" && (
-            <div className="w-full h-full flex flex-col gap-4">
-              <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
+            {step === "signup" && (
+              <div className="w-full h-full flex flex-col gap-4">
+                <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
 
-              <div className="flex flex-col gap-2">
-                <h1 className="text-xl font-medium mt-2">Sign Up</h1>
-                <p className="text-xs">
-                  Empower your experience, sign up for a free account today
-                </p>
-              </div>
-
-              <div className="w-full flex flex-col gap-3">
-                <div className="flex flex-col gap-1">
-                  <label className="font-medium text-xs">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Enter Your Name"
-                    className="bg-[#F8F8F8] py-2 px-1 rounded-sm text-xs"
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
+                <div className="flex flex-col gap-2">
+                  <h1 className="text-xl font-medium mt-2">Sign Up</h1>
+                  <p className="text-xs">
+                    Empower your experience, sign up for a free account today
+                  </p>
                 </div>
 
-                <div className="flex flex-col gap-1">
-                  <label className="font-medium text-xs">Email*</label>
-                  <input
-                    type="text"
-                    name="email"
-                    placeholder="ex. email@domain.com"
-                    className="bg-[#F8F8F8] py-2 px-1 rounded-sm text-black text-xs"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1">
-                  <label className="font-medium text-xs">Phone Number*</label>
-                  <div className="flex items-center bg-white rounded-sm overflow-hidden">
-                    <select
-                      name="country_code"
-                      className="bg-[#F8F8F8] text-black text-xs py-2 px-1 outline-none border-r border-gray-300"
-                      value={formData.country_code}
-                      onChange={handleChange}
-                    >
-                      <option value="+91">+91</option>
-                    </select>
+                <div className="w-full flex flex-col gap-3">
+                  <div className="flex flex-col gap-1">
+                    <label className="font-medium text-xs">Name</label>
                     <input
                       type="text"
-                      name="phone_number"
-                      placeholder="Enter Phone Number"
-                      className="bg-[#F8F8F8] flex-1 py-2 px-1 text-black outline-none text-xs"
-                      value={formData.phone_number}
+                      name="name"
+                      placeholder="Enter Your Name"
+                      className="bg-[#F8F8F8] py-2 px-1 rounded-sm text-xs"
+                      value={formData.name}
                       onChange={handleChange}
                     />
                   </div>
-                </div>
 
-                <div className="flex flex-col gap-1 relative">
-                  <label className="font-medium text-sm">Password</label>
-                  <div className="relative">
+                  <div className="flex flex-col gap-1">
+                    <label className="font-medium text-xs">Email*</label>
                     <input
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      placeholder="Enter Password"
-                      className="bg-[#F8F8F8] py-2 px-1 rounded-sm text-black w-full pr-10"
-                      value={formData.password}
+                      type="text"
+                      name="email"
+                      placeholder="ex. email@domain.com"
+                      className="bg-[#F8F8F8] py-2 px-1 rounded-sm text-black text-xs"
+                      value={formData.email}
                       onChange={handleChange}
                     />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                    >
-                      {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                    </button>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="font-medium text-xs">Phone Number*</label>
+                    <div className="flex items-center bg-white rounded-sm overflow-hidden">
+                      <select
+                        name="country_code"
+                        className="bg-[#F8F8F8] text-black text-xs py-2 px-1 outline-none border-r border-gray-300"
+                        value={formData.country_code}
+                        onChange={handleChange}
+                      >
+                        <option value="+91">+91</option>
+                      </select>
+                      <input
+                        type="text"
+                        name="phone_number"
+                        placeholder="Enter Phone Number"
+                        className="bg-[#F8F8F8] flex-1 py-2 px-1 text-black outline-none text-xs"
+                        value={formData.phone_number}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-1 relative">
+                    <label className="font-medium text-sm">Password</label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Enter Password"
+                        className="bg-[#F8F8F8] py-2 px-1 rounded-sm text-black w-full pr-10"
+                        value={formData.password}
+                        onChange={handleChange}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      >
+                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <p className="text-[10px]">
-                By registering for an account, you are consenting to our{" "}
-                <a className="text-[#026451] underline">Terms of Service</a> and
-                confirming that you have reviewed and accepted the{" "}
-                <span className="text-[#026451]">Global Privacy Statement</span>
-                .
-              </p>
+                <p className="text-[10px]">
+                  By registering for an account, you are consenting to our{" "}
+                  <a className="text-[#314370] underline">Terms of Service</a> and
+                  confirming that you have reviewed and accepted the{" "}
+                  <span className="text-[#314370]">Global Privacy Statement</span>
+                  .
+                </p>
 
-              <button
-                onClick={handleSignup}
-                disabled={loading}
-                className="w-full bg-[#026451] text-xs text-white font-medium py-3 flex items-center justify-center rounded-xl mt-2 hover:bg-[#028965] transition"
-              >
-                {loading ? "Signing Up..." : "Sign Up"}
-              </button>
+                <button
+                  onClick={handleSignup}
+                  disabled={loading}
+                  className="w-full bg-[#9E2339] text-xs text-white font-medium py-3 flex items-center justify-center rounded-xl mt-2 hover:bg-[#7E1C2D] transition"
+                >
+                  {loading ? "Signing Up..." : "Sign Up"}
+                </button>
 
-              <p className="text-xs text-center">
-                Already have an account?{" "}
-                <a href="/login" className="text-[#026451] underline">
-                  Login
-                </a>
-              </p>
-            </div>
-          )}
-
-          {step === "verify" && (
-            <div className="w-full h-full flex flex-col items-center justify-center gap-6">
-              <div className="flex flex-col gap-2">
-                <h1 className="text-2xl font-medium text-center mt-2">Verify Email</h1>
-                <p className="text-xs text-center text-gray-600">
-                  We've sent a 6-digit verification code to <br />
-                  <span className="text-[#026451] font-medium">{formData.email}</span>
+                <p className="text-xs text-center">
+                  Already have an account?{" "}
+                  <a href="/login" className="text-[#314370] underline">
+                    Login
+                  </a>
                 </p>
               </div>
-              <div className="w-full flex items-center justify-center mt-2">
-                <OtpInput
-                  value={otp}
-                  onChange={setOtp}
-                  numInputs={6}
-                  renderInput={(props) => (
-                    <input
-                      {...props}
-                      className="border mr-2 text-3xl rounded-sm flex items-center justify-center w-10 h-14"
-                    />
+            )}
+
+            {step === "verify" && (
+              <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+                <div className="flex flex-col gap-2">
+                  <h1 className="text-2xl font-medium text-center mt-2">Verify Email</h1>
+                  <p className="text-xs text-center text-gray-600">
+                    We've sent a 6-digit verification code to <br />
+                    <span className="text-[#314370] font-medium">{formData.email}</span>
+                  </p>
+                </div>
+                <div className="w-full flex items-center justify-center mt-2">
+                  <OtpInput
+                    value={otp}
+                    onChange={setOtp}
+                    numInputs={6}
+                    renderInput={(props) => (
+                      <input
+                        {...props}
+                        className="border mr-2 text-3xl rounded-sm flex items-center justify-center w-10 h-14"
+                      />
+                    )}
+                  />
+                </div>
+
+                <button
+                  onClick={handleVerify}
+                  disabled={loading}
+                  className="w-full bg-[#9E2339] py-4 flex items-center text-white justify-center rounded-full mt-6 hover:bg-[#7E1C2D] transition"
+                >
+                  {loading ? "Verifying..." : "Verify Email"}
+                </button>
+
+                {/* RESEND LOGIC */}
+                <p className="text-center mt-4 text-xs text-gray-500">
+                  {resendTimer > 0 ? (
+                    <span className="text-gray-400">
+                      Resend code in <span className="text-[#314370] font-bold">{resendTimer}s</span>
+                    </span>
+                  ) : (
+                    <span
+                      className="cursor-pointer hover:text-black hover:underline transition-all"
+                      onClick={handleResendOTP}
+                    >
+                      Didn't receive code? <b className="text-[#314370]">Resend</b>
+                    </span>
                   )}
-                />
+                </p>
               </div>
+            )}
+          </div>
 
-              <button
-                onClick={handleVerify}
-                disabled={loading}
-                className="w-full bg-[#026451] py-4 flex items-center text-white justify-center rounded-full mt-6 hover:bg-[#028965] transition"
-              >
-                {loading ? "Verifying..." : "Verify Email"}
-              </button>
-
-              {/* RESEND LOGIC */}
-              <p className="text-center mt-4 text-xs text-gray-500">
-                {resendTimer > 0 ? (
-                  <span className="text-gray-400">
-                    Resend code in <span className="text-[#026451] font-bold">{resendTimer}s</span>
-                  </span>
-                ) : (
-                  <span
-                    className="cursor-pointer hover:text-black hover:underline transition-all"
-                    onClick={handleResendOTP}
-                  >
-                    Didn't receive code? <b className="text-[#026451]">Resend</b>
-                  </span>
-                )}
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Right Section */}
-        <div className="w-1/2 h-full flex flex-col relative items-start overflow-hidden">
-          {/* <h1 className="text-lg font-medium w-full z-10">
+          {/* Right Section */}
+          <div className="w-1/2 h-full flex flex-col relative items-start overflow-hidden">
+            {/* <h1 className="text-lg font-medium w-full z-10">
             "Every career begins with one step.
             <br />
             Start yours with clarity, confidence, and the right tools."
           </h1> */}
 
-          <div className="w-full h-full">
-            <HeroSlider />
+            <div className="w-full h-full">
+              <HeroSlider />
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </main>
   );
@@ -347,7 +347,7 @@ const SignUpContent = () => {
 
 const Page = () => {
   return (
-    <Suspense fallback={<div className="w-full h-screen flex items-center justify-center text-white bg-[#0E7457]">Loading...</div>}>
+    <Suspense fallback={<div className="w-full h-screen flex items-center justify-center text-white bg-[#071526]">Loading...</div>}>
       <SignUpContent />
     </Suspense>
   );
