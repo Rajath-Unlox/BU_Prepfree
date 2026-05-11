@@ -779,7 +779,7 @@ const Page = () => {
                     await requestFullscreen();
                     setShowFullscreenModal(false);
                   }}
-                  className="px-4 py-2 bg-[#314370] text-white rounded-md font-medium hover:bg-[#314370]/85"
+                  className="px-4 py-2 bg-[#0B5B4D] text-white rounded-md font-medium hover:bg-[#094d41]"
                 >
                   Go Fullscreen
                 </button>
@@ -792,7 +792,7 @@ const Page = () => {
 
         <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-200 max-w-4xl w-full flex flex-col gap-8">
           <div className="flex flex-col items-center gap-2 text-center">
-            <h1 className="text-3xl font-bold text-[#314370]">System Check</h1>
+            <h1 className="text-3xl font-bold text-[#00241E]">System Check</h1>
             <p className="text-gray-500">
               Ensure your device is ready for the assessment. All checks must
               pass.
