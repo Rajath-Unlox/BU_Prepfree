@@ -7,7 +7,7 @@ import Link from "next/link";
 import api from "@/lib/api";
 import Image from "next/image";
 import prepfreeGreen from "@/public/images/PrepfreeGreen.png";
-import prepfreeLight from "@/public/images/PrepfreeLight.png";
+import BU_Prepfree_logo from "@/public/images/BU_Prepfree_logo.svg";
 import HeroSlider from "@/components/HeroSlider";
 
 const Page = () => {
@@ -103,24 +103,25 @@ const Page = () => {
           transform: "scale(2)"
         }}
       />
+      <div className="absolute inset-0 z-0 bg-[#071526]/60" />
 
 
       <Toaster position="top-right" />
 
       {/* Outer Card Wrapper with Shining Edge */}
-      <div className="relative z-10 w-[1000px] max-w-[95vw] h-[600px] max-h-[95vh] p-[2px] rounded-[24px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(2,100,81,0.5)] flex bg-[#002522]">
+      <div className="relative z-10 w-[1000px] max-w-[95vw] h-[600px] max-h-[95vh] p-[2px] rounded-[24px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(49,67,112,0.5)] flex bg-[#071526]">
 
         {/* Spinning Gradient for Shining Edge */}
         <div className="absolute top-1/2 left-1/2 w-[200%] aspect-square -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-          <div className="w-full h-full animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#81EFAD_180deg,transparent_180deg_300deg,#81EFAD_360deg)]" />
+          <div className="w-full h-full animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#9FB3C8_180deg,transparent_180deg_300deg,#9FB3C8_360deg)]" />
         </div>
 
         {/* Actual Card Content */}
-        <div className="relative z-10 w-full h-full flex rounded-[22px] overflow-hidden bg-gradient-to-t from-[#002522] via-[#026451] to-[#002522]">
+        <div className="relative z-10 w-full h-full flex rounded-[22px] overflow-hidden bg-gradient-to-t from-[#071526] via-[#314370] to-[#071526]">
           {/* Left Section */}
           <div className="w-1/2 flex flex-col items-center justify-center bg-white text-black h-full p-8 relative">
             <div className="w-full h-full flex flex-col gap-8">
-              <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
+              <Image src={BU_Prepfree_logo} alt="" className="w-1/6 h-auto mb-4" />
 
               <div className="flex flex-col gap-2">
                 <h1 className="text-xl font-medium mt-4">Welcome back!</h1>
@@ -163,7 +164,7 @@ const Page = () => {
               </div>
 
               <div className="w-full flex justify-end">
-                <Link href="/forgot-password" className="text-[#026451] text-xs font-medium hover:underline cursor-pointer">
+                <Link href="/forgot-password" className="text-[#314370] text-xs font-medium hover:underline cursor-pointer">
                   Forgot Password?
                 </Link>
               </div>
@@ -171,17 +172,17 @@ const Page = () => {
               <button
                 onClick={handleLogin}
                 disabled={loading}
-                className="w-full bg-[#026451] text-white font-medium py-3 text-sm flex items-center justify-center rounded-sm mt-2 hover:bg-[#028965] transition"
+                className="w-full bg-[#071526] text-white font-medium py-3 text-sm flex items-center justify-center rounded-sm mt-2 hover:bg-[#314370] transition"
               >
                 {loading ? "Logging In..." : "Log In"}
               </button>
 
-              <p className="text-xs text-center font-medium">
+              {/* <p className="text-xs text-center font-medium">
                 Don’t have an account?{" "}
                 <Link href="/sign-up" className="text-[#026451] ">
                   Sign Up
                 </Link>
-              </p>
+              </p> */}
             </div>
           </div>
 
