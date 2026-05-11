@@ -7,7 +7,7 @@ import Link from "next/link";
 import api from "@/lib/api";
 import Image from "next/image";
 import prepfreeGreen from "@/public/images/PrepfreeGreen.png";
-import prepfreeLight from "@/public/images/PrepfreeLight.png";
+import BU_Prepfree_logo from "@/public/images/BU_Prepfree_logo.svg";
 import HeroSlider from "@/components/HeroSlider";
 
 const Page = () => {
@@ -103,16 +103,17 @@ const Page = () => {
           transform: "scale(2)"
         }}
       />
+      <div className="absolute inset-0 z-0 bg-[#071526]/60" />
 
 
       <Toaster position="top-right" />
 
       {/* Outer Card Wrapper with Shining Edge */}
-      <div className="relative z-10 w-[1000px] max-w-[95vw] h-[600px] max-h-[95vh] p-[2px] rounded-[24px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(31,43,70,0.5)] flex bg-[#071526]">
+      <div className="relative z-10 w-[1000px] max-w-[95vw] h-[600px] max-h-[95vh] p-[2px] rounded-[24px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(2,100,81,0.5)] flex bg-[#002522]">
 
         {/* Spinning Gradient for Shining Edge */}
         <div className="absolute top-1/2 left-1/2 w-[200%] aspect-square -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-          <div className="w-full h-full animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#314370_180deg,transparent_180deg_300deg,#314370_360deg)]" />
+          <div className="w-full h-full animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#81EFAD_180deg,transparent_180deg_300deg,#81EFAD_360deg)]" />
         </div>
 
         {/* Actual Card Content */}
@@ -120,7 +121,7 @@ const Page = () => {
           {/* Left Section */}
           <div className="w-1/2 flex flex-col items-center justify-center bg-white text-black h-full p-8 relative">
             <div className="w-full h-full flex flex-col gap-8">
-              <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
+              <Image src={BU_Prepfree_logo} alt="" className="w-1/6 h-auto mb-4" />
 
               <div className="flex flex-col gap-2">
                 <h1 className="text-xl font-medium mt-4">Welcome back!</h1>
@@ -171,17 +172,17 @@ const Page = () => {
               <button
                 onClick={handleLogin}
                 disabled={loading}
-                className="w-full bg-[#9E2339] text-white font-medium py-3 text-sm flex items-center justify-center rounded-sm mt-2 hover:bg-[#7E1C2D] transition"
+                className="w-full bg-[#026451] text-white font-medium py-3 text-sm flex items-center justify-center rounded-sm mt-2 hover:bg-[#028965] transition"
               >
                 {loading ? "Logging In..." : "Log In"}
               </button>
 
-              <p className="text-xs text-center font-medium">
+              {/* <p className="text-xs text-center font-medium">
                 Don’t have an account?{" "}
                 <Link href="/sign-up" className="text-[#314370] ">
                   Sign Up
                 </Link>
-              </p>
+              </p> */}
             </div>
           </div>
 

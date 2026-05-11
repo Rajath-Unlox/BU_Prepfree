@@ -128,206 +128,204 @@ const ForgotPasswordContent = () => {
                         transform: "scale(2)"
                     }}
                 />
+                <div className="absolute inset-0 z-0 bg-[#071526]/60" />
 
 
                 {/* Outer Card Wrapper with Shining Edge */}
                 <div className="relative z-10 w-[1000px] max-w-[95vw] h-[600px] max-h-[95vh] p-[2px] rounded-[24px] overflow-hidden shadow-[0px_4px_20px_0px_rgba(49,67,112,0.5)] flex bg-[#071526]">
                     {/* Spinning Gradient for Shining Edge */}
                     <div className="absolute top-1/2 left-1/2 w-[200%] aspect-square -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                        <div className="w-full h-full animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#314370_180deg,transparent_180deg_300deg,#314370_360deg)]" />
+                        <div className="w-full h-full animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_120deg,#9FB3C8_180deg,transparent_180deg_300deg,#9FB3C8_360deg)]" />
                     </div>
 
                     {/* Actual Card Content */}
                     <div className="relative z-10 w-full h-full flex rounded-[22px] overflow-hidden bg-gradient-to-t from-[#071526] via-[#314370] to-[#071526]">
-                    {/* Left Section */}
-                    <div className="w-1/2 flex flex-col items-center justify-center bg-white text-black h-full p-8 relative">
+                        {/* Left Section */}
+                        <div className="w-1/2 flex flex-col items-center justify-center bg-white text-black h-full p-8 relative">
 
-                        {step === "email" && (
-                            <div className="w-full h-full flex flex-col gap-8">
-                                <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
+                            {step === "email" && (
+                                <div className="w-full h-full flex flex-col gap-8">
+                                    <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
 
-                                <div className="flex flex-col gap-2">
-                                    <h1 className="text-xl font-medium mt-4">Forgot Password?</h1>
-                                    <p className="text-xs text-gray-600">
-                                        Enter your email address and we'll send you an OTP to reset your password.
+                                    <div className="flex flex-col gap-2">
+                                        <h1 className="text-xl font-medium mt-4">Forgot Password?</h1>
+                                        <p className="text-xs text-gray-600">
+                                            Enter your email address and we'll send you an OTP to reset your password.
+                                        </p>
+                                    </div>
+
+                                    <div className="w-full flex flex-col gap-6 ">
+                                        <div className="flex flex-col gap-1">
+                                            <label className="font-medium text-xs">Email*</label>
+                                            <input
+                                                type="email"
+                                                placeholder="ex. email@domain.com"
+                                                className="bg-[#F8F8F8] py-2 px-2 rounded-sm text-black text-xs"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        onClick={handleSendOTP}
+                                        disabled={loading}
+                                        className="w-full bg-[#071526] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-4 hover:bg-[#314370] transition"
+                                    >
+                                        {loading ? "Sending OTP..." : "Send OTP"}
+                                    </button>
+
+                                    <p className="text-sm text-center font-medium mt-4">
+                                        Remember your password?{" "}
+                                        <Link href="/login" className="text-[#314370]">
+                                            Login
+                                        </Link>
                                     </p>
                                 </div>
+                            )}
 
-                                <div className="w-full flex flex-col gap-6 ">
-                                    <div className="flex flex-col gap-1">
-                                        <label className="font-medium text-xs">Email*</label>
-                                        <input
-                                            type="email"
-                                            placeholder="ex. email@domain.com"
-                                            className="bg-[#F8F8F8] py-2 px-2 rounded-sm text-black text-xs"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
+                            {step === "otp" && (
+                                <div className="w-full h-full flex flex-col gap-8">
+                                    <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
+
+                                    <div className="flex flex-col gap-2">
+                                        <h1 className="text-xl font-medium mt-4">Verify OTP</h1>
+                                        <p className="text-xs text-gray-600">
+                                            We've sent a 6-digit verification code to{" "}
+                                            <span className="text-[#314370] font-medium">{email}</span>
+                                        </p>
+                                    </div>
+
+                                    <div className="w-full flex flex-col items-center justify-center">
+                                        <OtpInput
+                                            value={otp}
+                                            onChange={setOtp}
+                                            numInputs={6}
+                                            renderInput={(props) => (
+                                                <input
+                                                    {...props}
+                                                    className="border mr-2 text-2xl rounded-sm flex items-center justify-center !w-10 h-14"
+                                                />
+                                            )}
                                         />
                                     </div>
-                                </div>
 
-                                <button
-                                    onClick={handleSendOTP}
-                                    disabled={loading}
-                                    className="w-full bg-[#9E2339] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-4 hover:bg-[#7E1C2D] transition"
-                                >
-                                    {loading ? "Sending OTP..." : "Send OTP"}
-                                </button>
+                                    <button
+                                        onClick={handleVerifyOTP}
+                                        disabled={loading}
+                                        className="w-full bg-[#071526] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-6 hover:bg-[#314370] transition"
+                                    >
+                                        Verify OTP
+                                    </button>
 
-                                <p className="text-sm text-center font-medium mt-4">
-                                    Remember your password?{" "}
-                                    <Link href="/login" className="text-[#314370]">
-                                        Login
-                                    </Link>
-                                </p>
-                            </div>
-                        )}
-
-                        {step === "otp" && (
-                            <div className="w-full h-full flex flex-col gap-8">
-                                <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
-
-                                <div className="flex flex-col gap-2">
-                                    <h1 className="text-xl font-medium mt-4">Verify OTP</h1>
-                                    <p className="text-xs text-gray-600">
-                                        We've sent a 6-digit verification code to{" "}
-                                        <span className="text-[#314370] font-medium">{email}</span>
-                                    </p>
-                                </div>
-
-                                <div className="w-full flex flex-col items-center justify-center">
-                                    <OtpInput
-                                        value={otp}
-                                        onChange={setOtp}
-                                        numInputs={6}
-                                        renderInput={(props) => (
-                                            <input
-                                                {...props}
-                                                className="border mr-2 text-2xl rounded-sm flex items-center justify-center !w-10 h-14"
-                                            />
+                                    <p className="text-center mt-4 text-xs text-gray-500">
+                                        {resendTimer > 0 ? (
+                                            <span className="text-gray-400">
+                                                Resend OTP in <span className="text-[#314370] font-bold">{resendTimer}s</span>
+                                            </span>
+                                        ) : (
+                                            <p className="text-sm text-center font-medium mt-4 cursor-pointer" onClick={handleResendOTP}>
+                                                Didn't receive code? <b className="text-[#314370]">Resend</b>
+                                            </p>
                                         )}
-                                    />
-                                </div>
 
-                                <button
-                                    onClick={handleVerifyOTP}
-                                    disabled={loading}
-                                    className="w-full bg-[#9E2339] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-6 hover:bg-[#7E1C2D] transition"
-                                >
-                                    Verify OTP
-                                </button>
-
-                                <p className="text-center mt-4 text-xs text-gray-500">
-                                    {resendTimer > 0 ? (
-                                        <span className="text-gray-400">
-                                            Resend OTP in <span className="text-[#314370] font-bold">{resendTimer}s</span>
-                                        </span>
-                                    ) : (
-                                        <span
-                                            className="cursor-pointer hover:text-black hover:underline transition-all"
-                                            onClick={handleResendOTP}
+                                        <button
+                                            onClick={() => setStep("email")}
+                                            className="text-[#314370] text-xs mt-2 hover:underline"
                                         >
-                                            Didn't receive code? <b className="text-[#314370]">Resend</b>
-                                        </span>
-                                    )}
-                                </p>
-
-                                <button
-                                    onClick={() => setStep("email")}
-                                    className="text-[#314370] text-xs mt-2 hover:underline"
-                                >
-                                    ← Change email
-                                </button>
-                            </div>
-                        )}
-
-                        {step === "reset" && (
-                            <div className="w-full h-full flex flex-col gap-8">
-                                <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
-
-                                <div className="flex flex-col gap-2">
-                                    <h1 className="text-xl font-medium mt-4">Reset Password</h1>
-                                    <p className="text-xs text-gray-600">
-                                        Create a new password for your account.
+                                            ← Change email
+                                        </button>
                                     </p>
                                 </div>
+                            )}
 
-                                <div className="w-full flex flex-col gap-6 ">
-                                    <div className="flex flex-col gap-1 relative">
-                                        <label className="font-medium text-xs">New Password*</label>
-                                        <div className="relative">
-                                            <input
-                                                type={showPassword ? "text" : "password"}
-                                                placeholder="Enter new password"
-                                                className="bg-[#F8F8F8] py-2 px-2 text-xs rounded-sm text-black w-full pr-10"
-                                                value={newPassword}
-                                                onChange={(e) => setNewPassword(e.target.value)}
-                                            />
-                                            <button
-                                                type="button"
-                                                onClick={() => setShowPassword(!showPassword)}
-                                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                                            >
-                                                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                            </button>
+                            {step === "reset" && (
+                                <div className="w-full h-full flex flex-col gap-8">
+                                    <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
+
+                                    <div className="flex flex-col gap-2">
+                                        <h1 className="text-xl font-medium mt-4">Reset Password</h1>
+                                        <p className="text-xs text-gray-600">
+                                            Create a new password for your account.
+                                        </p>
+                                    </div>
+
+                                    <div className="w-full flex flex-col gap-6 ">
+                                        <div className="flex flex-col gap-1 relative">
+                                            <label className="font-medium text-xs">New Password*</label>
+                                            <div className="relative">
+                                                <input
+                                                    type={showPassword ? "text" : "password"}
+                                                    placeholder="Enter new password"
+                                                    className="bg-[#F8F8F8] py-2 px-2 text-xs rounded-sm text-black w-full pr-10"
+                                                    value={newPassword}
+                                                    onChange={(e) => setNewPassword(e.target.value)}
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowPassword(!showPassword)}
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                                >
+                                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex flex-col gap-1 relative">
+                                            <label className="font-medium text-xs">Confirm Password*</label>
+                                            <div className="relative">
+                                                <input
+                                                    type={showConfirmPassword ? "text" : "password"}
+                                                    placeholder="Confirm new password"
+                                                    className="bg-[#F8F8F8] py-2 px-2 text-xs rounded-sm text-black w-full pr-10"
+                                                    value={confirmPassword}
+                                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                                >
+                                                    {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-col gap-1 relative">
-                                        <label className="font-medium text-xs">Confirm Password*</label>
-                                        <div className="relative">
-                                            <input
-                                                type={showConfirmPassword ? "text" : "password"}
-                                                placeholder="Confirm new password"
-                                                className="bg-[#F8F8F8] py-2 px-2 text-xs rounded-sm text-black w-full pr-10"
-                                                value={confirmPassword}
-                                                onChange={(e) => setConfirmPassword(e.target.value)}
-                                            />
-                                            <button
-                                                type="button"
-                                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                                            >
-                                                {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <p className="text-[10px] text-gray-500 mt-2">
+                                        Password must be at least 8 characters with 1 uppercase letter, 1 number, and 1 special character.
+                                    </p>
+
+                                    <button
+                                        onClick={handleResetPassword}
+                                        disabled={loading}
+                                        className="w-full bg-[#071526] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-4 hover:bg-[#314370] transition"
+                                    >
+                                        {loading ? "Resetting..." : "Reset Password"}
+                                    </button>
                                 </div>
+                            )}
 
-                                <p className="text-[10px] text-gray-500 mt-2">
-                                    Password must be at least 8 characters with 1 uppercase letter, 1 number, and 1 special character.
-                                </p>
-
-                                <button
-                                    onClick={handleResetPassword}
-                                    disabled={loading}
-                                    className="w-full bg-[#9E2339] text-white font-medium py-3 text-xs flex items-center justify-center rounded-sm mt-4 hover:bg-[#7E1C2D] transition"
-                                >
-                                    {loading ? "Resetting..." : "Reset Password"}
-                                </button>
-                            </div>
-                        )}
-
-                        {/* <Image
+                            {/* <Image
                             src={prepfreeLight}
                             alt=""
                             className="w-full h-auto absolute bottom-0 left-2"
                         /> */}
-                    </div>
+                        </div>
 
-                    {/* Right Section */}
-                    <div className="w-1/2 h-full flex flex-col relative items-start overflow-hidden">
-                        {/* <h1 className="text-lg font-medium w-full z-10">
+                        {/* Right Section */}
+                        <div className="w-1/2 h-full flex flex-col relative items-start overflow-hidden">
+                            {/* <h1 className="text-lg font-medium w-full z-10">
                             "Every career begins with one step.
                             <br />
                             Start yours with clarity, confidence, and the right tools."
                         </h1> */}
 
-                        <div className="w-full h-full">
-                            <HeroSlider />
+                            <div className="w-full h-full">
+                                <HeroSlider />
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </main>
         </>
