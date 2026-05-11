@@ -21,21 +21,26 @@ import api from "@/lib/api";
 import { Toaster, toast } from "sonner";
 import { FaceDetector, FilesetResolver } from "@mediapipe/tasks-vision";
 
+
 const Page = () => {
   // STATE MANAGEMENT
   const [testStarted, setTestStarted] = useState(false);
+
 
   const [questionNo, setQuestionNo] = useState(1);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const systemVideoRef = useRef<HTMLVideoElement | null>(null);
 
+
   // Streams
   const cameraStreamRef = useRef<MediaStream | null>(null);
   const screenStreamRef = useRef<MediaStream | null>(null);
 
+
   const [cameraReady, setCameraReady] = useState(false);
   const [screenReady, setScreenReady] = useState(false);
   const [micReady, setMicReady] = useState(false);
+
 
   // Audio Analysis
   const [micVolume, setMicVolume] = useState(0);
@@ -45,13 +50,16 @@ const Page = () => {
   const dataArrayRef = useRef<Uint8Array | null>(null);
   const rafIdRef = useRef<number | null>(null);
 
+
   // MediaPipe Face Detector
   const [faceDetector, setFaceDetector] = useState<FaceDetector | null>(null);
   const [isModelLoading, setIsModelLoading] = useState(true);
 
+
   // PROCTORING: Separate Violation Trackers
   const rightClickViolationsRef = useRef(0);
   const copyViolationsRef = useRef(0);
+
 
   const [selectedOptionId, setSelectedOptionId] = useState<any>(null);
   const [popupOpen, setPopupOpen] = useState(false);
@@ -59,47 +67,59 @@ const Page = () => {
     "completed" | "timeout" | "violation" | "network_failure"
   >("completed");
 
+
   const [questions, setQuestions] = useState<any[]>([]);
   const [assessment, setAssessment] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+
 
   // ACTION LOADING STATES
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFinishing, setIsFinishing] = useState(false);
 
+
   // CONFIRMATION MODAL STATE
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
+
   const [timeLeft, setTimeLeft] = useState(0);
   const [testFinished, setTestFinished] = useState(false);
+
 
   // Network Grace Period
   const [isOffline, setIsOffline] = useState(false);
   const [reconnectTimeLeft, setReconnectTimeLeft] = useState(120);
 
+
   const [testId, setTestId] = useState<string | null>(null);
   const testIdRef = useRef<string | null>(null);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
 
+
   const router = useRouter();
   const [assessmentId, setAssessmentId] = useState<string | null>(null);
+
 
   // FULLSCREEN PROCTORING
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showFullscreenModal, setShowFullscreenModal] = useState(false);
   const fullscreenViolationsRef = useRef(0);
 
+
   const requestFullscreen = async () => {
     const el = document.documentElement;
+
 
     if (el.requestFullscreen) await el.requestFullscreen();
     // @ts-ignore
     else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
   };
 
+
   const exitFullscreen = async () => {
     if (document.exitFullscreen) await document.exitFullscreen();
   };
+
 
   // MEDIAPIPE INITIALIZATION
   useEffect(() => {
@@ -123,8 +143,10 @@ const Page = () => {
       }
     };
 
+
     initializeFaceDetector();
   }, []);
+
 
   // FINISH TEST LOGIC
   const finishTest = async (
@@ -136,6 +158,7 @@ const Page = () => {
   ) => {
     if (!assessmentId) return;
     if (testFinished) return;
+
 
     try {
       const currentTestId = testIdRef.current || testId;
@@ -150,6 +173,7 @@ const Page = () => {
       console.error("Error finishing test:", error);
     }
 
+
     setTestFinished(true);
     setFinishReason(reason);
     setPopupOpen(true);
@@ -157,9 +181,11 @@ const Page = () => {
     localStorage.removeItem(`assessment_timer_${assessmentId}`);
   };
 
+
   // PROCTORING: SEPARATE HANDLERS
   useEffect(() => {
     if (!testStarted || testFinished) return;
+
 
     const handleSpecificViolation = (
       action: string,
@@ -182,15 +208,18 @@ const Page = () => {
       }
     };
 
+
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
       handleSpecificViolation("Right-click", rightClickViolationsRef);
     };
 
+
     const handleCopy = (e: ClipboardEvent) => {
       e.preventDefault();
       handleSpecificViolation("Copying content", copyViolationsRef);
     };
+
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (
@@ -203,9 +232,11 @@ const Page = () => {
       }
     };
 
+
     document.addEventListener("contextmenu", handleContextMenu);
     document.addEventListener("copy", handleCopy as any);
     document.addEventListener("keydown", handleKeyDown);
+
 
     return () => {
       document.removeEventListener("contextmenu", handleContextMenu);
@@ -214,32 +245,41 @@ const Page = () => {
     };
   }, [testStarted, testFinished]);
 
+
   // AUDIO VISUALIZER SETUP
   const setupAudioAnalysis = (stream: MediaStream) => {
     if (!stream.getAudioTracks().length) return;
+
 
     const AudioContextClass =
       window.AudioContext || (window as any).webkitAudioContext;
     if (!AudioContextClass) return;
 
+
     const audioContext = new AudioContextClass();
     const source = audioContext.createMediaStreamSource(stream);
     const analyser = audioContext.createAnalyser();
 
+
     analyser.fftSize = 256;
     source.connect(analyser);
 
+
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
+
 
     audioContextRef.current = audioContext;
     analyserRef.current = analyser;
     dataArrayRef.current = dataArray;
 
+
     const updateVolume = () => {
       if (!analyserRef.current || !dataArrayRef.current) return;
 
+
       analyserRef.current.getByteFrequencyData(dataArrayRef.current as any);
+
 
       let sum = 0;
       for (let i = 0; i < dataArrayRef.current.length; i++) {
@@ -247,29 +287,37 @@ const Page = () => {
       }
       const average = sum / dataArrayRef.current.length;
 
+
       const normalizedVol = Math.min(1, average / 30);
+
 
       setMicVolume(normalizedVol);
       volumeRef.current = normalizedVol;
 
+
       rafIdRef.current = requestAnimationFrame(updateVolume);
     };
 
+
     updateVolume();
   };
+
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setAssessmentId(params.get("id"));
   }, []);
 
+
   useEffect(() => {
     setQuestionStartTime(Date.now());
   }, [questionNo]);
 
+
   // HEARTBEAT
   useEffect(() => {
     if (!testStarted || testFinished || !testId) return;
+
 
     const interval = setInterval(async () => {
       try {
@@ -282,12 +330,15 @@ const Page = () => {
       }
     }, 10000);
 
+
     return () => clearInterval(interval);
   }, [testStarted, testFinished, testId]);
+
 
   // NETWORK STABILITY
   useEffect(() => {
     let interval: NodeJS.Timeout;
+
 
     const handleOnline = () => {
       setIsOffline(false);
@@ -295,13 +346,16 @@ const Page = () => {
       toast.success("Connection restored. Resuming test...");
     };
 
+
     const handleOffline = () => {
       setIsOffline(true);
       toast.error("Internet connection lost!");
     };
 
+
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
+
 
     if (isOffline && !testFinished && testStarted) {
       interval = setInterval(() => {
@@ -316,12 +370,14 @@ const Page = () => {
       }, 1000);
     }
 
+
     return () => {
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
       if (interval) clearInterval(interval);
     };
   }, [isOffline, testFinished, testStarted]);
+
 
   // MEDIA CHECKS
   const startScreenShare = async () => {
@@ -331,8 +387,10 @@ const Page = () => {
         audio: false,
       });
 
+
       const videoTrack = displayStream.getVideoTracks()[0];
       const settings = videoTrack.getSettings();
+
 
       // @ts-ignore
       if (settings.displaySurface && settings.displaySurface !== "monitor") {
@@ -345,8 +403,10 @@ const Page = () => {
         return;
       }
 
+
       screenStreamRef.current = displayStream;
       setScreenReady(true);
+
 
       videoTrack.onended = () => {
         if (testStarted && !testFinished) {
@@ -362,8 +422,10 @@ const Page = () => {
     }
   };
 
+
   useEffect(() => {
     let mounted = true;
+
 
     const initializeMedia = async () => {
       try {
@@ -372,21 +434,26 @@ const Page = () => {
           audio: true,
         });
 
+
         if (!mounted) {
           stream.getTracks().forEach((t) => t.stop());
           return;
         }
 
+
         cameraStreamRef.current = stream;
         setCameraReady(true);
         setMicReady(true);
 
+
         setupAudioAnalysis(stream);
+
 
         if (systemVideoRef.current) {
           systemVideoRef.current.srcObject = stream;
           systemVideoRef.current.play().catch(() => { });
         }
+
 
         await startScreenShare();
       } catch (err) {
@@ -395,7 +462,9 @@ const Page = () => {
       }
     };
 
+
     initializeMedia();
+
 
     return () => {
       mounted = false;
@@ -408,10 +477,12 @@ const Page = () => {
     };
   }, []);
 
+
   // Handle Video Stream Switching
   useEffect(() => {
     const stream = cameraStreamRef.current;
     if (!stream) return;
+
 
     if (!testStarted && systemVideoRef.current) {
       systemVideoRef.current.srcObject = stream;
@@ -422,12 +493,15 @@ const Page = () => {
     }
   }, [testStarted, cameraReady]);
 
+
   // FACE DETECTION
   useEffect(() => {
     if (!testStarted || testFinished || !faceDetector || !videoRef.current)
       return;
 
+
     let detectionInterval: NodeJS.Timeout;
+
 
     const detectFace = () => {
       if (videoRef.current && videoRef.current.readyState === 4) {
@@ -437,15 +511,18 @@ const Page = () => {
           startTimeMs
         ).detections;
 
+
         const faceDetected = detections.length > 0;
         const currentVolume = volumeRef.current;
         const isTalking = currentVolume > 0.3;
+
 
         if (!faceDetected) {
           toast.warning("Face not detected! Please ensure you are visible.", {
             id: "face-missing",
             icon: <AlertTriangle className="text-yellow-500" />,
           });
+
 
           if (isTalking) {
             toast.warning("Suspicious: Sound detected but face is missing!", {
@@ -459,12 +536,15 @@ const Page = () => {
       }
     };
 
+
     detectionInterval = setInterval(detectFace, 500);
     return () => clearInterval(detectionInterval);
   }, [testStarted, testFinished, faceDetector]);
 
+
   useEffect(() => {
     if (!testStarted || testFinished) return;
+
 
     const handleFullscreenChange = () => {
       const fullscreenActive =
@@ -472,10 +552,13 @@ const Page = () => {
         // @ts-ignore
         !!document.webkitFullscreenElement;
 
+
       setIsFullscreen(fullscreenActive);
+
 
       if (!fullscreenActive) {
         fullscreenViolationsRef.current += 1;
+
 
         if (fullscreenViolationsRef.current === 1) {
           // ⚠️ FIRST EXIT → WARNING
@@ -491,9 +574,11 @@ const Page = () => {
       }
     };
 
+
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     // @ts-ignore
     document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+
 
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
@@ -505,8 +590,10 @@ const Page = () => {
     };
   }, [testStarted, testFinished]);
 
+
   useEffect(() => {
     if (!showFullscreenModal) return;
+
 
     const timeout = setTimeout(() => {
       if (!isFullscreen) {
@@ -515,12 +602,15 @@ const Page = () => {
       }
     }, 10000); // ⏱ 10 seconds grace
 
+
     return () => clearTimeout(timeout);
   }, [showFullscreenModal, isFullscreen]);
+
 
   // FETCH ASSESSMENT
   useEffect(() => {
     if (!assessmentId) return;
+
 
     localStorage.removeItem(`assessment_timer_${assessmentId}`);
     setTestId(null);
@@ -531,6 +621,7 @@ const Page = () => {
     setQuestionNo(1);
     rightClickViolationsRef.current = 0;
     copyViolationsRef.current = 0;
+
 
     const fetchAssessment = async () => {
       try {
@@ -544,17 +635,21 @@ const Page = () => {
       }
     };
 
+
     fetchAssessment();
   }, [assessmentId]);
+
 
   // TAB SWITCH / BLUR DETECTION (VIOLATION)
   useEffect(() => {
     if (!testStarted || testFinished) return;
 
+
     const handleViolation = () => {
       if (!document.hidden) return;
       finishTest("violation");
     };
+
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
@@ -562,12 +657,15 @@ const Page = () => {
       }
     };
 
+
     document.addEventListener("visibilitychange", handleVisibilityChange);
+
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [testStarted, testFinished, assessmentId, testId]);
+
 
   // BROWSER CLOSE (keepalive)
   useEffect(() => {
@@ -582,6 +680,7 @@ const Page = () => {
         test_id: currentTestId,
       });
 
+
       fetch(`${baseUrl}/assessments/finish`, {
         method: "POST",
         headers: {
@@ -593,19 +692,24 @@ const Page = () => {
       });
     };
 
+
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [testId, assessmentId]);
+
 
   // TIMER
   useEffect(() => {
     if (!assessment || !assessmentId || !testStarted) return;
 
+
     const TIMER_KEY = `assessment_timer_${assessmentId}`;
     const totalSeconds = (assessment.total_test_time || 0) * 60;
 
+
     let storedEndTime = localStorage.getItem(TIMER_KEY);
     let endTime: number;
+
 
     if (storedEndTime) {
       endTime = parseInt(storedEndTime, 10);
@@ -614,12 +718,15 @@ const Page = () => {
       localStorage.setItem(TIMER_KEY, endTime.toString());
     }
 
+
     const initialDiff = Math.floor((endTime - Date.now()) / 1000);
     setTimeLeft(initialDiff > 0 ? initialDiff : 0);
+
 
     const interval = setInterval(() => {
       const now = Date.now();
       const diff = Math.floor((endTime - now) / 1000);
+
 
       if (diff <= 0) {
         clearInterval(interval);
@@ -632,19 +739,24 @@ const Page = () => {
       }
     }, 1000);
 
+
     return () => clearInterval(interval);
   }, [assessment, assessmentId, testFinished, testStarted]);
 
+
   const totalQuestions = questions.length;
   const currentQuestion = questions[questionNo - 1];
+
 
   // HANDLERS
   const submitAnswer = async (goNext: boolean) => {
     if (!assessment || !currentQuestion) return;
 
+
     const timeTakenForThisQuestion = Math.floor(
       (Date.now() - questionStartTime) / 1000
     );
+
 
     try {
       const payload = {
@@ -655,17 +767,21 @@ const Page = () => {
         test_id: testIdRef.current || testId || undefined,
       };
 
+
       const res = await api.post("/assessments/submit", payload);
+
 
       let newTestId = res.data?.test_id;
       if (newTestId && typeof newTestId === "object") {
         newTestId = newTestId.$oid || newTestId._id || newTestId.id || newTestId.test_id || newTestId.toString();
       }
 
+
       if (!testIdRef.current && newTestId) {
         setTestId(newTestId);
         testIdRef.current = newTestId;
       }
+
 
       if (goNext) {
         setQuestionNo((prev) => prev + 1);
@@ -677,15 +793,19 @@ const Page = () => {
     }
   };
 
+
   const handleNext = async () => {
     if (testFinished || isSubmitting || isFinishing) return;
+
 
     if (!selectedOptionId) {
       toast.warning("Question must be answered to proceed to next");
       return;
     }
 
+
     setIsSubmitting(true);
+
 
     try {
       if (questionNo === totalQuestions) {
@@ -701,12 +821,14 @@ const Page = () => {
     }
   };
 
+
   // Trigger Confirmation Modal
   const handleFinishEarly = () => {
     if (!isFinishing && !isSubmitting && !testFinished) {
       setShowConfirmModal(true);
     }
   };
+
 
   // Actual Finish Action
   const confirmFinish = async () => {
@@ -719,15 +841,18 @@ const Page = () => {
     }
   };
 
+
   const handleClick = () => {
     router.push(`/dashboard/my-performance`);
   };
+
 
   const formatTime = (secs: number) => {
     const m = Math.floor(secs / 60);
     const s = secs % 60;
     return `${m} mins ${s.toString().padStart(2, "0")} sec`;
   };
+
 
   const handleStartTest = async () => {
     if (
@@ -747,12 +872,14 @@ const Page = () => {
     }
   };
 
+
   if (loading)
     return (
       <div className="w-full h-screen flex items-center justify-center text-xl">
         Loading Assessment...
       </div>
     );
+
 
   // SYSTEM CHECK VIEW
   if (!testStarted) {
@@ -773,13 +900,14 @@ const Page = () => {
                 </div>
               </div>
 
+
               <div className="flex justify-end gap-3">
                 <button
                   onClick={async () => {
                     await requestFullscreen();
                     setShowFullscreenModal(false);
                   }}
-                  className="px-4 py-2 bg-[#0B5B4D] text-white rounded-md font-medium hover:bg-[#094d41]"
+                  className="px-4 py-2 bg-[#314370] text-white rounded-md font-medium hover:bg-[#314370]/85"
                 >
                   Go Fullscreen
                 </button>
@@ -788,16 +916,19 @@ const Page = () => {
           </div>
         )}
 
+
         <Toaster position="top-right" richColors />
+
 
         <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-200 max-w-4xl w-full flex flex-col gap-8">
           <div className="flex flex-col items-center gap-2 text-center">
-            <h1 className="text-3xl font-bold text-[#00241E]">System Check</h1>
+            <h1 className="text-3xl font-bold text-[#314370]">System Check</h1>
             <p className="text-gray-500">
               Ensure your device is ready for the assessment. All checks must
               pass.
             </p>
           </div>
+
 
           <div className="flex flex-col md:flex-row gap-8">
             {/* Video Preview Section */}
@@ -826,6 +957,7 @@ const Page = () => {
                     {cameraReady ? "Camera On" : "Camera Off"}
                   </div>
 
+
                   <div
                     className={`px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 backdrop-blur-md ${micReady
                       ? "bg-green-500/20 text-green-300 border border-green-500/30"
@@ -843,11 +975,13 @@ const Page = () => {
               </div>
             </div>
 
+
             {/* Checklist Section */}
             <div className="flex-1 flex flex-col justify-center gap-4">
               <h3 className="font-semibold text-lg text-gray-800">
                 Required Permissions
               </h3>
+
 
               <div className="space-y-3">
                 <CheckItem
@@ -887,6 +1021,7 @@ const Page = () => {
                 />
               </div>
 
+
               <div className="mt-6">
                 <button
                   onClick={handleStartTest}
@@ -922,10 +1057,12 @@ const Page = () => {
     );
   }
 
+
   // ASSESSMENT VIEW
   return (
     <main className="w-full h-screen p-5">
       <Toaster position="top-right" richColors />
+
 
       {/* RECONNECTING OVERLAY */}
       {isOffline && !testFinished && (
@@ -948,6 +1085,7 @@ const Page = () => {
         </div>
       )}
 
+
       <div className="w-full flex flex-col items-center border-[2px] border-[#D9D9D9] rounded-xl h-full relative">
         {/* Header Controls: Finish Button only appears after Question 1 */}
         {questionNo > 1 && (
@@ -965,6 +1103,7 @@ const Page = () => {
           </div>
         )}
 
+
         {/* HEADING */}
         <div className="flex flex-col items-center justify-center gap-1 mt-8">
           <h1 className="text-[#00241E] text-3xl font-bold">
@@ -975,6 +1114,7 @@ const Page = () => {
           </p>
         </div>
 
+
         <div className="w-[70%] mt-6">
           <div className="w-full flex items-center justify-between">
             <div className="w-fit px-4 py-1 border rounded-full bg-gray-50">
@@ -982,6 +1122,7 @@ const Page = () => {
                 Question {questionNo} of {totalQuestions}
               </p>
             </div>
+
 
             <div
               className={`flex gap-2 items-center px-4 py-1 rounded-full ${timeLeft < 300
@@ -1000,10 +1141,12 @@ const Page = () => {
             </div>
           </div>
 
+
           <ProgressBar
             questionNo={questionNo}
             totalQuestions={totalQuestions}
           />
+
 
           <div className="w-full flex justify-end items-center mt-6">
             <button
@@ -1024,12 +1167,14 @@ const Page = () => {
             </button>
           </div>
 
+
           {currentQuestion && (
             <div className="w-full flex flex-col items-start mt-6 mb-4">
               <h1 className="text-xl w-full font-medium leading-relaxed">
                 <span className="font-bold mr-2">{questionNo}.</span>
                 {currentQuestion.question}
               </h1>
+
 
               <div className="flex flex-col mt-4 gap-4 w-full">
                 {Object.entries(currentQuestion.options).map(
@@ -1056,6 +1201,7 @@ const Page = () => {
                         }
                       />
 
+
                       <span
                         className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 ${selectedOptionId === key
                           ? "border-[#0B5B4D]"
@@ -1067,6 +1213,7 @@ const Page = () => {
                         )}
                       </span>
 
+
                       <span className="font-medium text-gray-800">{value}</span>
                     </label>
                   )
@@ -1075,6 +1222,7 @@ const Page = () => {
             </div>
           )}
         </div>
+
 
         {/* Camera Preview with Dynamic 3-Dot Audio Visualizer */}
         <div className="absolute right-4 bottom-4 rounded-xl bg-black h-40 w-64 overflow-hidden shadow-2xl border-2 border-white ring-1 ring-gray-200 flex items-center justify-center group">
@@ -1090,6 +1238,7 @@ const Page = () => {
             playsInline
             autoPlay
           />
+
 
           <div className="absolute bottom-2 left-2 flex gap-2 z-20">
             <div
@@ -1128,6 +1277,7 @@ const Page = () => {
         </div>
       </div>
 
+
       {/* CONFIRMATION MODAL */}
       {showConfirmModal && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-200">
@@ -1146,6 +1296,7 @@ const Page = () => {
                 </p>
               </div>
             </div>
+
 
             <div className="flex justify-end gap-3 mt-2">
               <button
@@ -1168,6 +1319,7 @@ const Page = () => {
         </div>
       )}
 
+
       {/* FINISH POPUP */}
       {popupOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-300">
@@ -1188,6 +1340,7 @@ const Page = () => {
                       : "Connection Failed"}
               </h1>
 
+
               <p className="text-gray-500 px-4">
                 {finishReason === "completed" &&
                   "You have successfully submitted the assessment."}
@@ -1200,6 +1353,7 @@ const Page = () => {
               </p>
             </div>
 
+
             {finishReason === "completed" ? (
               <Image src={Success} alt="Success" className="w-[60%] h-auto" />
             ) : (
@@ -1207,6 +1361,7 @@ const Page = () => {
                 <AlertTriangle size={64} className="text-red-500" />
               </div>
             )}
+
 
             <button
               onClick={handleClick}
@@ -1224,7 +1379,9 @@ const Page = () => {
   );
 };
 
+
 export default Page;
+
 
 const ProgressBar = ({
   questionNo,
@@ -1236,6 +1393,7 @@ const ProgressBar = ({
   const percentage =
     totalQuestions > 0 ? (questionNo / totalQuestions) * 100 : 0;
 
+
   return (
     <div className="w-full bg-gray-200 h-2 mt-4 rounded-full overflow-hidden">
       <div
@@ -1245,6 +1403,7 @@ const ProgressBar = ({
     </div>
   );
 };
+
 
 const CheckItem = ({
   label,
