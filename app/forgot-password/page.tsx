@@ -8,8 +8,9 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import HeroSlider from "@/components/HeroSlider";
-import prepfreeGreen from "@/public/images/PrepfreeGreen.png";
+import BU_Prepfree_logo from "@/public/images/BU_Prepfree_logo.svg";
 import prepfreeLight from "@/public/images/PrepfreeLight.png";
+import prepfreeGreen from "@/public/images/PrepfreeGreen.png";
 
 const ForgotPasswordContent = () => {
     const [step, setStep] = useState<"email" | "otp" | "reset">("email");
@@ -118,16 +119,16 @@ const ForgotPasswordContent = () => {
     return (
         <>
             <Toaster position="top-right" containerStyle={{ zIndex: 9999 }} />
-            <main className="font-creato w-full h-screen flex items-center justify-center text-white overflow-hidden relative">
+            <main className="font-creato bg-[#193767] w-full h-screen flex items-center justify-center text-white overflow-hidden relative">
                 {/* Blurred Background Image */}
-                <div
+                {/* <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
                     style={{
                         backgroundImage: "url('/images/Login_Signup_Heros/Prepfree_Post_My%20Interview.webp')",
                         filter: "blur(100px)",
                         transform: "scale(2)"
                     }}
-                />
+                /> */}
                 <div className="absolute inset-0 z-0 bg-[#071526]/60" />
 
 
@@ -145,7 +146,7 @@ const ForgotPasswordContent = () => {
 
                         {step === "email" && (
                             <div className="w-full h-full flex flex-col gap-8">
-                                <Image src={prepfreeGreen} alt="" className="w-1/3 h-auto mt-4" />
+                                <Image src={BU_Prepfree_logo} alt="" className="mt-4" />
 
                                 <div className="flex flex-col gap-2">
                                     <h1 className="text-xl font-medium mt-4">Forgot Password?</h1>

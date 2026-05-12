@@ -8,6 +8,8 @@ import api from "@/lib/api";
 import Image from "next/image";
 import prepfreeGreen from "@/public/images/PrepfreeGreen.png";
 import BU_Prepfree_logo from "@/public/images/BU_Prepfree_logo.svg";
+import Prepfree_logo from "@/public/images/Prepfree_logo.png";
+import Unlox_logo from "@/public/images/unlox_logo.svg";
 import HeroSlider from "@/components/HeroSlider";
 
 const Page = () => {
@@ -93,16 +95,16 @@ const Page = () => {
   };
 
   return (
-    <main className="font-creato w-full h-screen flex items-center justify-center text-white overflow-hidden relative">
+    <main className="font-creato bg-[#193767] w-full h-screen flex items-center justify-center text-white overflow-hidden relative">
       {/* Blurred Background Image */}
-      <div
+      {/* <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
           backgroundImage: "url('/images/Login_Signup_Heros/Prepfree_Post_My%20Interview.webp')",
           filter: "blur(100px)",
           transform: "scale(2)"
         }}
-      />
+      /> */}
       <div className="absolute inset-0 z-0 bg-[#071526]/60" />
 
 
@@ -121,7 +123,12 @@ const Page = () => {
           {/* Left Section */}
           <div className="w-1/2 flex flex-col items-center justify-center bg-white text-black h-full p-8 relative">
             <div className="w-full h-full flex flex-col gap-8">
-              <Image src={BU_Prepfree_logo} alt="" className="w-1/6 h-auto mb-4" />
+              <div className="flex flex-row">
+
+              <Image src={BU_Prepfree_logo} alt="" className="w-3/4 mb-4" />
+              {/* <Image src={Prepfree_logo} alt="" className="w-1/2 h-auto mb-4" />
+              <Image src={Unlox_logo} alt="" className="w-1/2 h-auto mb-4" /> */}
+              </div>
 
               <div className="flex flex-col gap-2">
                 <h1 className="text-xl font-medium mt-4">Welcome back!</h1>
@@ -172,7 +179,7 @@ const Page = () => {
               <button
                 onClick={handleLogin}
                 disabled={loading}
-                className="w-full bg-[#071526] text-white font-medium py-3 text-sm flex items-center justify-center rounded-sm mt-2 hover:bg-[#314370] transition"
+                className="w-full bg-[#810505] text-white font-medium py-3 text-sm flex items-center justify-center rounded-sm mt-2 hover:bg-[#314370] transition"
               >
                 {loading ? "Logging In..." : "Log In"}
               </button>
