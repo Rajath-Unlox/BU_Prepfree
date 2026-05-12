@@ -124,10 +124,7 @@ const Page = () => {
           <div className="w-1/2 flex flex-col items-center justify-center bg-white text-black h-full p-8 relative">
             <div className="w-full h-full flex flex-col gap-8">
               <div className="flex flex-row">
-
-              <Image src={BU_Prepfree_logo} alt="" className="w-3/4 mb-4" />
-              {/* <Image src={Prepfree_logo} alt="" className="w-1/2 h-auto mb-4" />
-              <Image src={Unlox_logo} alt="" className="w-1/2 h-auto mb-4" /> */}
+                    <img src="/images/BU_Prepfree_logo.svg" alt="BU Prepfree Logo" className="w-[900px] h-auto mb-4" />
               </div>
 
               <div className="flex flex-col gap-2">
