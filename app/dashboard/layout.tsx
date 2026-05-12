@@ -22,6 +22,7 @@ import { Bell, Zap } from "lucide-react";
 import NotificationPopup from "@/components/notification/NotificationPopup";
 import api from "@/lib/api";
 import credits from "@/public/images/wallet/credits.png";
+import logo from "@/public/images/BU_Prepfree_logo.svg";
 import Image from "next/image";
 import Script from "next/script";
 
@@ -121,11 +122,15 @@ export default function RootLayout({
           {/* Fixed Header */}
           <header className="w-full h-auto flex flex-col items-start gap-2 px-4 py-2 bg-[#F1F1F1] rounded-tl-[15px] z-10">
             <div className="w-full flex items-center justify-between">
-              <div className="flex gap-2 w-1/2">
+              <div className="flex gap-2 flex-1">
                 <SidebarTrigger className="-ml-1 bg-[#314370] text-[#f2f2f2] py-5 px-6 hover:bg-[#071526] hover:text-[#f2f2f2] hover:opacity-100 hover:shadow-none cursor-pointer" />
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex-1 flex justify-center">
+                <Image src={logo} alt="BU Prepfree" height={32} className="h-10 w-auto" priority />
+              </div>
+
+              <div className="flex items-center gap-3 flex-1 justify-end">
                 {/* Wallet Button */}
                 <div
                   onClick={() => router.push("/dashboard/wallet")}
